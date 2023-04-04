@@ -8,4 +8,5 @@
 ## Что используется в проекте:
 
 - [Архитектурная методология](https://feature-sliced.design/ru/)
-- UI-kit [Material UI](https://mui.com/) + styled-components
+- [Material UI](https://mui.com/) + styled-components
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
