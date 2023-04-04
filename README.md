@@ -1,2 +1,4 @@
-# reshu-hub
-university project
+# Проект ReshuHub
+
+Установка зависимостей проекта - npm install
+Старт проекта - npm run start
