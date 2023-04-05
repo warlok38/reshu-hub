@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider as TThemeProvider, mainTheme } from 'shared/theme';
+import { ThemeProvider as TThemeProvider, mainTheme } from 'shared/lib/theme';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 type ThemeProviderProps = {

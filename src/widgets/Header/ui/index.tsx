@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar } from 'entities/NavBar';
+import { NavBar } from 'entities/navBar';
 import * as S from './styled';
 
 export function Header() {

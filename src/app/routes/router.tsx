@@ -6,7 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
-import { Header } from 'widgets/Header';
+import { Header } from 'widgets/header';
 
 export function getRouter() {
   const unprotectedRoutes = publicRoutes.map(({ index, path, element }) => {
