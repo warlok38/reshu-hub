@@ -1,5 +1,5 @@
-import logoSvg from './logo.svg';
+import logo from './logo.svg';
 
 export const list = {
-  logo: logoSvg,
+  logo,
 };
