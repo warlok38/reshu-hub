@@ -29,7 +29,7 @@ export const Contacts = styled('div')`
   }
 `;
 
-export const Info_items = styled('div')`
+export const Contacts_item = styled('div')`
   display: flex;
 
   :not(:last-child) {

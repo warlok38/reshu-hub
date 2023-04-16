@@ -7,9 +7,7 @@ const Footer = () => {
     <S.Wrapper>
       <S.Content>
         <Contacts />
-        <S.Info_items>
-          <S.Logo />
-        </S.Info_items>
+        <S.Logo />
       </S.Content>
     </S.Wrapper>
   );
