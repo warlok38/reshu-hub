@@ -12,8 +12,11 @@ export const WrapperCarusel = styled('div')`
   margin-bottom: 64px;
 `;
 
-export const Events = styled('a')`
+export const Eventsdiv = styled('div')`
   margin-bottom: 24px;
+`;
+
+export const Events = styled('a')`
   font-family: 'Stratos LC Web';
   font-style: normal;
   font-weight: 700;
@@ -22,8 +25,6 @@ export const Events = styled('a')`
   letter-spacing: 0.5px;
   color: #ff9764;
 `;
-
-export const Teg = styled('div')``;
 
 export const WraperCard = styled('div')`
   /* width: 410px; */
@@ -109,4 +110,97 @@ export const containerEvents = styled('div')`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 32px;
+`;
+
+export const Teg = styled('div')`
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+
+export const TegText = styled('a')`
+  ont-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+  letter-spacing: 0.15px;
+`;
+
+export const TegActiveButton = styled('a')`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 6px;
+  background: #ff9764;
+  border-radius: 10px;
+  margin-left: 10px;
+`;
+
+export const TegActiveButtonA = styled('a')`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 20px;
+  color: #ffffff;
+`;
+
+export const TegButton = styled('a')`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 6px;
+  border-radius: 10px;
+  border-color: #ff9764;
+  border-style: solid;
+  margin-left: 10px;
+`;
+
+export const TegButtonA = styled('a')`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 20px;
+  color: #212121;
+`;
+export const ButtonMorediv = styled('div')`
+  display: flex;
+  align-items: center;
+  text-align: center;
+`;
+export const ButtonMore = styled('a')`
+  background: #ff9764;
+  /* default */
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 0px 16px;
+  gap: 16px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14),
+    0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 50px;
+  display: inline-block;
+`;
+
+export const ButtonMoreA = styled('a')`
+  font-family: 'Stratos LC Web';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 36px;
+  /* identical to box height, or 257% */
+
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+
+  /* shades/white */
+
+  color: #ffffff;
 `;

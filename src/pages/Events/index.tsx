@@ -10,8 +10,38 @@ function EventsPage() {
     <S.Wrapper>
       <Breadcrumbs />
       <S.WrapperCarusel></S.WrapperCarusel>
-      <S.Events>Мероприятия</S.Events>
+      <S.Eventsdiv>
+        <S.Events>Мероприятия</S.Events>{' '}
+      </S.Eventsdiv>
+
       <Tabs />
+      <S.Teg>
+        <S.TegText>Теги:</S.TegText>
+        <S.TegButton>
+          <S.TegButtonA>Все теги</S.TegButtonA>
+        </S.TegButton>
+        <S.TegActiveButton>
+          <S.TegActiveButtonA>Выставка</S.TegActiveButtonA>
+        </S.TegActiveButton>
+        <S.TegActiveButton>
+          <S.TegActiveButtonA>Конкурс</S.TegActiveButtonA>
+        </S.TegActiveButton>
+        <S.TegButton>
+          <S.TegButtonA>Концерт</S.TegButtonA>
+        </S.TegButton>
+        <S.TegButton>
+          <S.TegButtonA>Круглый стол</S.TegButtonA>
+        </S.TegButton>
+        <S.TegButton>
+          <S.TegButtonA>Мастер класс</S.TegButtonA>
+        </S.TegButton>
+        <S.TegButton>
+          <S.TegButtonA>Олимпиада</S.TegButtonA>
+        </S.TegButton>
+        <S.TegButton>
+          <S.TegButtonA>Открытая лекция</S.TegButtonA>
+        </S.TegButton>
+      </S.Teg>
       <S.containerEvents>
         <Card />
         <Card />
@@ -23,6 +53,11 @@ function EventsPage() {
         <Card />
         <Card />
       </S.containerEvents>
+      <S.ButtonMorediv>
+        <S.ButtonMore>
+          <S.ButtonMoreA>БОЛЬШЕ МЕРОПРИЯТИЙ</S.ButtonMoreA>
+        </S.ButtonMore>
+      </S.ButtonMorediv>
     </S.Wrapper>
   );
 }
