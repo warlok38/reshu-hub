@@ -1,8 +1,8 @@
 import React from 'react';
 import * as S from './styled';
-import Contacts from './Contacts';
+import { Contacts } from './Contacts';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <S.Wrapper>
       <S.Content>
@@ -12,5 +12,3 @@ const Footer = () => {
     </S.Wrapper>
   );
 };
-
-export default Footer;

@@ -20,7 +20,7 @@ export const themeOptions: CssVarsThemeOptions = {
       palette: {
         text: {
           primary: grey1,
-          secondary: grey2,
+          secondary: white,
           disabled: grey3,
         },
         background: {
@@ -30,7 +30,7 @@ export const themeOptions: CssVarsThemeOptions = {
           main: orange,
         },
         secondary: {
-          main: blue1,
+          main: blue2,
         },
       },
     },
