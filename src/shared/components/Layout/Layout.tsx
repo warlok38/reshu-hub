@@ -4,16 +4,18 @@ import { PageWrap } from 'shared/components/PageWrap';
 import * as S from './Layout.styled';
 
 type LayoutProps = {
-  children?: React.ReactNode;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
 };
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ header, footer }: LayoutProps) {
   return (
     <S.Wrapper>
-      {children}
+      {header}
       <PageWrap>
         <Outlet />
       </PageWrap>
+      {footer}
     </S.Wrapper>
   );
 }
