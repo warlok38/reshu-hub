@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styled';
-import { styled } from '@mui/material/styles';
+
 import { Container, Stack , Paper, Grid, Button, Card, CardContent, CardMedia, Typography, CardActionArea, CardActions } from '@mui/material';
 
 
@@ -10,29 +10,29 @@ const cards = [1,2,3,4]
 function AboutPage() {
   return<S.Wrapper>
   <>
-  <main>
+  
     <Paper style={{backgroundImage: 'url(https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png)'}}>
       <Container>
-        <Grid container>
+        
           <Grid item md={4}>
-            <div>
-                <h1>ReshUCube</h1>
+           
+                <Typography>ReshUCube</Typography>
                 <h3>Маленький космический кубик с большим исследовательским потенциалом </h3>
                 <Button variant="contained" disableElevation>
                   Смотреть видео
                 </Button>
-            </div>
-          </Grid>
+            
+          
         </Grid>
       </Container>
     </Paper>
     <Grid>
-          <div><h1>Зачем нужен ReshUCube?</h1></div>
+          <h1>Зачем нужен ReshUCube?</h1>
     </Grid>
     <Container maxWidth="md">
     <Grid container spacing={4}>
-      {cards.map((card) =>(
-      <Grid item key={card} xs={12} sm={6} md={4}>
+      {cards.map((card, index) =>(
+      <Grid key={index} xs={12} sm={6} md={4}>
             <Typography variant='h5'>
             Современно
             </Typography>
@@ -43,16 +43,16 @@ function AboutPage() {
     </Grid>
     </Container>
     <Grid>
-          <div><h1>Спутники</h1></div>
+          <Typography>Спутники</Typography>
     </Grid>
     <Container maxWidth="md">
     <Grid container spacing={4}>
-      {cards.map((card) =>(
-      <Grid item key={card} xs={12} sm={6} md={4}>
-        <Card className='card'>
-          <CardMedia 
-          className='cardMedia'
-          image='url(https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png)' 
+    {cards.map((card, index) =>(
+      <Grid key={index} xs={12} sm={6} md={4}>
+        <Card>
+          <CardMedia
+          component="img"
+          image="https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png" 
           title='Image Title'
           />
           <CardContent className='cardContent'>
@@ -67,7 +67,7 @@ function AboutPage() {
       </Grid>))}
     </Grid>
     </Container>
-  </main>
+  
   </>
   </S.Wrapper>
 }
