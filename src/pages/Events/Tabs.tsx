@@ -11,12 +11,11 @@ export default function ColorTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', mb: '20px' }}>
       <Tabs
         value={value}
         onChange={handleChange}
-        textColor="secondary"
-        indicatorColor="secondary"
+        textColor="primary"
         aria-label="secondary tabs example"
       >
         <Tab
