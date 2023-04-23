@@ -3,10 +3,11 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-export default function DisableElevation() {
+export function ButtonMore() {
   return (
     <Box
       sx={{
+        mb: '64px',
         width: '100%',
         display: 'flex',
         justifyContent: 'space-around',

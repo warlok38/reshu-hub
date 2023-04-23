@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 
-export default function Carousel() {
+export function Carousel() {
   return (
     <Box
       sx={{

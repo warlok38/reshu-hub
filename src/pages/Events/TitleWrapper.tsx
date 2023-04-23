@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-export default function DisableElevation() {
+export function TitleWrapper() {
   return (
     <Box sx={{ mb: '15px' }}>
       <Typography

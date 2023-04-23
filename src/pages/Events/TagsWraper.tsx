@@ -5,22 +5,26 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-// const tags = [
-//   'Все теги',
-//   'Выставка',
-//   'Конкурс',
-//   'Концерт',
-//   'Круглый стол',
-//   'Мастер-класс',
-//   'Олимпиада',
-//   'Открытая лекция',
-// ];
+const tags: string[] = [
+  'Все теги',
+  'Выставка',
+  'Конкурс',
+  'Концерт',
+  'Круглый стол',
+  'Мастер-класс',
+  'Олимпиада',
+  'Открытая лекция',
+];
 
-const handleDelete = () => {};
-
-export default function Tags() {
+export function TagsChip() {
+  const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
+  const handleDelete = (tag: string) => {
+    setSelectedTags((prevSelectedTags) =>
+      prevSelectedTags.filter((t) => t !== tag)
+    );
+  };
   return (
-    <Box sx={{ width: '100%', mb: '20px' }}>
+    <Box sx={{ width: '100%', mb: '32px' }}>
       <Stack
         direction="row"
         spacing={2}
@@ -33,57 +37,26 @@ export default function Tags() {
         >
           Теги:
         </Typography>
-        <Chip
-          label="Все теги"
-          variant="outlined"
-          color="warning"
-          size="small"
-        />
-
-        <Chip
-          label="Выставка "
-          variant="outlined"
-          color="warning"
-          size="small"
-          onDelete={handleDelete}
-        />
-        <Chip
-          label="Конкурс"
-          variant="outlined"
-          color="warning"
-          size="small"
-          onDelete={handleDelete}
-        />
-        <Chip
-          label="Концерт"
-          variant="outlined"
-          color="warning"
-          size="small"
-        />
-        <Chip
-          label="Круглый стол"
-          variant="outlined"
-          color="warning"
-          size="small"
-        />
-        <Chip
-          label="Мастер-класс"
-          variant="outlined"
-          color="warning"
-          size="small"
-        />
-        <Chip
-          label="Олимпиада"
-          variant="outlined"
-          color="warning"
-          size="small"
-        />
-        <Chip
-          label="Открытая лекция"
-          variant="outlined"
-          color="warning"
-          size="small"
-        />
+        {tags.map((tag) => {
+          const isSelected = selectedTags.includes(tag);
+          return (
+            <Chip
+              key={tag}
+              label={tag}
+              variant={isSelected ? 'filled' : 'outlined'}
+              color="warning"
+              size="small"
+              onClick={() =>
+                setSelectedTags((prevSelectedTags) =>
+                  isSelected
+                    ? prevSelectedTags.filter((t) => t !== tag)
+                    : [...prevSelectedTags, tag]
+                )
+              }
+              onDelete={isSelected ? () => handleDelete(tag) : undefined}
+            />
+          );
+        })}
       </Stack>
     </Box>
   );

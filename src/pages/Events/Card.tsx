@@ -1,22 +1,17 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-
-{
-  /* <Box
-  sx={{
-    bgcolor: 'background.paper',
-    boxShadow: 1,
-    borderRadius: 2,
-    p: 2,
-    minWidth: 300,
-  }}
-></Box>; */
-}
-
-export default function MediaCard() {
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  IconButton,
+  Box,
+} from '@mui/material';
+import {
+  FavoriteBorderOutlined,
+  ChatBubbleOutlineOutlined,
+  ShareOutlined,
+} from '@mui/icons-material';
+export function MediaCard() {
   return (
     <Card
       sx={{
@@ -29,8 +24,8 @@ export default function MediaCard() {
       <CardMedia
         sx={{ height: '300px', width: 'auto' }}
         component="img"
-        image=""
-        title=""
+        image="https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png"
+        title="Image Title"
       />
       <CardContent>
         <Typography
@@ -45,7 +40,7 @@ export default function MediaCard() {
           Конкурс
         </Typography>
         <Typography
-          sx={{ mt: '5px' }}
+          sx={{ mt: '10px' }}
           color="#rgba(0, 0, 0, 0.87"
           fontWeight={'500'}
           fontSize={'20'}
@@ -55,7 +50,7 @@ export default function MediaCard() {
           Конкурс на получение стипендий Президента и Правительства РФ
         </Typography>
         <Typography
-          sx={{ mt: '5px' }}
+          sx={{ mt: '10px' }}
           fontFamily={'Stratos LC Web'}
           color="#rgba(0, 0, 0, 0.87"
           fontWeight={'500'}
@@ -66,7 +61,7 @@ export default function MediaCard() {
           8 апреля – 12 мая
         </Typography>
         <Typography
-          sx={{ mt: '5px' }}
+          sx={{ mt: '10px' }}
           color="#616161"
           fontWeight={'400'}
           fontSize={'16'}
@@ -75,6 +70,17 @@ export default function MediaCard() {
         >
           К участию приглашаются ученики 10–11-х классов.
         </Typography>
+        <Box sx={{ pt: '10px' }}>
+          <IconButton sx={{ color: '#FF526D', pr: '24px' }}>
+            <FavoriteBorderOutlined />
+          </IconButton>
+          <IconButton sx={{ color: '#FF526D', pr: '24px' }}>
+            <ChatBubbleOutlineOutlined />
+          </IconButton>
+          <IconButton sx={{ color: '#FF526D' }}>
+            <ShareOutlined />
+          </IconButton>
+        </Box>
       </CardContent>
     </Card>
   );

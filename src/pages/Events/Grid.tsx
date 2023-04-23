@@ -3,11 +3,11 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 
 import Box from '@mui/material/Box';
-import Card from './Card';
+import { MediaCard } from './Card';
 
-export default function RowAndColumnSpacing() {
+export function WrapperCards() {
   return (
-    <Box sx={{ width: '100%', mb: '25px' }}>
+    <Box sx={{ width: '100%', mb: '32px' }}>
       <Grid
         container
         rowSpacing={7}
@@ -17,55 +17,55 @@ export default function RowAndColumnSpacing() {
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
         <Grid
           item
           xs={4}
         >
-          <Card />
+          <MediaCard />
         </Grid>
       </Grid>
     </Box>
