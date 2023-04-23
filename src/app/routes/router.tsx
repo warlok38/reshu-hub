@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
 import { Header } from 'widgets/header';
+import { Footer } from 'widgets/footer';
 
 export function getRouter() {
   const unprotectedRoutes = publicRoutes.map(({ index, path, element }) => {
@@ -28,9 +29,10 @@ export function getRouter() {
         path="/"
         element={
           <React.Suspense fallback={'...загрузка'}>
-            <Layout>
-              <Header />
-            </Layout>
+            <Layout
+              footer={<Footer />}
+              header={<Header />}
+            />
           </React.Suspense>
         }
       >

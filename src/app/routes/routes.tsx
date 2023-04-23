@@ -5,6 +5,7 @@ import { routes } from 'shared/models';
 const News = React.lazy(() => import('pages/News'));
 const Events = React.lazy(() => import('pages/Events'));
 const Lectures = React.lazy(() => import('pages/Lectures'));
+const About = React.lazy(() => import('pages/About'));
 const NotFound = React.lazy(() => import('pages/NotFound'));
 
 export type Route = Omit<RouteObject, 'children'>;
@@ -30,6 +31,10 @@ export const publicRoutes: Route[] = [
   {
     path: routes.lectures.path,
     element: <Lectures />,
+  },
+  {
+    path: routes.about.path,
+    element: <About />,
   },
   {
     path: '*',
