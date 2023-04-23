@@ -25,11 +25,11 @@ export function ButtonMore() {
         disableElevation
       >
         <Typography
-          color={'#FFFFFF'}
-          fontWeight={'500'}
-          fontSize={'14'}
-          letterSpacing={'1.25'}
-          textTransform={'uppercase'}
+          color="#FFFFFF"
+          fontWeight="500"
+          fontSize="14"
+          letterSpacing="1.25"
+          textTransform="uppercase"
         >
           больше мероприятий
         </Typography>

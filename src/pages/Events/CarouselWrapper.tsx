@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 
-export function Carousel() {
+export function CarouselWrapper() {
   return (
     <Box
       sx={{

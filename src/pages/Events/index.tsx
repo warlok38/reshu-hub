@@ -1,19 +1,19 @@
 import React from 'react';
 import * as S from './styled';
-import { ColorTabs } from './Tabs';
-import { TagsChip } from './TagsWraper';
-import { WrapperCards } from './Grid';
-import { ButtonMore } from './Button';
+import { EventStatusTabs } from './EventStatusTabs';
+import { TagsWraper } from './TagsWraper';
+import { WrapperCards } from './WrapperCards';
+import { ButtonMore } from './ButtonMore';
 import { TitleWrapper } from './TitleWrapper';
-import { Carousel } from './CarouselWrapper';
+import { CarouselWrapper } from './CarouselWrapper';
 
 function EventsPage() {
   return (
     <S.Wrapper>
-      <Carousel />
+      <CarouselWrapper />
       <TitleWrapper />
-      <ColorTabs />
-      <TagsChip />
+      <EventStatusTabs />
+      <TagsWraper />
       <WrapperCards />
       <ButtonMore />
     </S.Wrapper>

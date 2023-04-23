@@ -8,10 +8,10 @@ export function TitleWrapper() {
       <Typography
         color="#FF9764"
         variant="h2"
-        fontWeight={'700'}
-        fontSize={'48'}
-        lineHeight={'60px'}
-        letterSpacing={'0.5'}
+        fontWeight="700"
+        fontSize="48"
+        lineHeight="60px"
+        letterSpacing="0.5"
       >
         Мероприятия
       </Typography>

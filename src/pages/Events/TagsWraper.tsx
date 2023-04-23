@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
@@ -16,7 +15,7 @@ const tags: string[] = [
   'Открытая лекция',
 ];
 
-export function TagsChip() {
+export function TagsWraper() {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const handleDelete = (tag: string) => {
     setSelectedTags((prevSelectedTags) =>
@@ -30,10 +29,10 @@ export function TagsChip() {
         spacing={2}
       >
         <Typography
-          fontWeight={'400'}
-          fontSize={'18px'}
-          lineHeight={'21px'}
-          letterSpacing={'0.15px'}
+          fontWeight="400"
+          fontSize="18px"
+          lineHeight="21px"
+          letterSpacing="0.15px"
         >
           Теги:
         </Typography>

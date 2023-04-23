@@ -11,6 +11,7 @@ import {
   ChatBubbleOutlineOutlined,
   ShareOutlined,
 } from '@mui/icons-material';
+
 export function MediaCard() {
   return (
     <Card
@@ -32,45 +33,46 @@ export function MediaCard() {
           sx={{ mt: '5px' }}
           gutterBottom
           color="#9E9E9E"
-          fontWeight={'500'}
-          fontSize={'12'}
-          letterSpacing={'2'}
+          fontWeight="500"
+          fontSize="12px"
+          letterSpacing="2px"
           component="div"
         >
           Конкурс
         </Typography>
         <Typography
-          sx={{ mt: '10px' }}
-          color="#rgba(0, 0, 0, 0.87"
-          fontWeight={'500'}
-          fontSize={'20'}
-          letterSpacing={'0.25'}
+          sx={{ mt: '5px' }}
+          gutterBottom
+          color="#000000DE"
+          fontWeight="600"
+          fontSize="20px"
+          letterSpacing="0.25px"
           component="div"
         >
           Конкурс на получение стипендий Президента и Правительства РФ
         </Typography>
         <Typography
-          sx={{ mt: '10px' }}
-          fontFamily={'Stratos LC Web'}
+          sx={{ mt: '5px' }}
+          fontFamily="Stratos LC Web"
           color="#rgba(0, 0, 0, 0.87"
-          fontWeight={'500'}
-          fontSize={'14'}
-          letterSpacing={'0.1'}
+          fontWeight="700"
+          fontSize="14px"
+          letterSpacing="0.1px"
           component="div"
         >
           8 апреля – 12 мая
         </Typography>
         <Typography
-          sx={{ mt: '10px' }}
+          sx={{ mt: '5px' }}
           color="#616161"
-          fontWeight={'400'}
-          fontSize={'16'}
-          letterSpacing={'0.5'}
+          fontWeight="400"
+          fontSize="16px"
+          letterSpacing="0.5px"
           component="div"
         >
           К участию приглашаются ученики 10–11-х классов.
         </Typography>
-        <Box sx={{ pt: '10px' }}>
+        <Box sx={{ pt: '5px' }}>
           <IconButton sx={{ color: '#FF526D', pr: '24px' }}>
             <FavoriteBorderOutlined />
           </IconButton>

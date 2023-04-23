@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-
 import Box from '@mui/material/Box';
-import { MediaCard } from './Card';
+import { MediaCard } from './MediaCard';
 
 export function WrapperCards() {
   return (
