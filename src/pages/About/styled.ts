@@ -6,7 +6,15 @@ export const Wrapper = styled('div')`
   gap: 64px;
 `;
 
-export const ImageContainer = styled('div')`
+/*export const ImageContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: 697px;
+`;*/
+
+export const Box = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
