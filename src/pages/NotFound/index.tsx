@@ -1,18 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { routes } from 'shared/models';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 import * as S from './styled';
 
 function NotFound() {
+  const navigate = useNavigate();
+
   return (
     <S.Wrapper>
       <S.Title>Страница не найдена :(</S.Title>
-      <Link
-        to={routes.news.path}
-        style={{ fontSize: 24 }}
+      <Button
+        onClick={() => navigate(-1)}
+        variant="text"
       >
-        Вернуться на главную
-      </Link>
+        Нажмите, чтобы вернуться
+      </Button>
     </S.Wrapper>
   );
 }

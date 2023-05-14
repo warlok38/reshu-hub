@@ -11,8 +11,16 @@ import {
   ChatBubbleOutlineOutlined,
   ShareOutlined,
 } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { headerRoutes } from 'shared/models';
 
-export function MediaCard() {
+type MediaCard = {
+  id: number;
+};
+
+export function MediaCard({ id }: MediaCard) {
+  const navigate = useNavigate();
+
   return (
     <Card
       sx={{
@@ -20,7 +28,9 @@ export function MediaCard() {
         borderRadius: '20px',
         boxShadow: '0px 3px 5px',
         bgcolor: '#F5F5F5',
+        cursor: 'pointer',
       }}
+      onClick={() => navigate(`${headerRoutes.lectures.path}/${id}`)}
     >
       <CardMedia
         sx={{ height: '300px', width: 'auto' }}
