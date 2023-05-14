@@ -1,5 +1,4 @@
 import React from 'react';
-import * as S from '../styled';
 import {Container, Grid, Typography} from '@mui/material';
 
   const cards = [1, 2, 3, 4];
@@ -21,7 +20,7 @@ import {Container, Grid, Typography} from '@mui/material';
           container
           spacing={4}
         >
-          {cards.map((card, index) => (
+          {cards.map((_card, index) => (
             <Grid
               item
               key={index}

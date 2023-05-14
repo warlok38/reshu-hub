@@ -1,9 +1,8 @@
 import React from 'react';
-import * as S from '../styled';
 import { MediaCard } from './MediaCard';
-import { MediaCard2 } from './MediaCard2';
 import {Grid,Typography,Box} from '@mui/material';
 
+const cards = [1, 2, 3, 4];
 
   export function Cards() {
     return(
@@ -17,47 +16,21 @@ import {Grid,Typography,Box} from '@mui/material';
             </Typography>
 
             <Grid
-            container
-            rowSpacing={7}
-            columnSpacing={{ xs: 7, sm: 7, md: 7 }}
+          container
+          spacing={4}
+        >
+          {cards.map((_card, index) => (
+            <Grid
+              item
+              key={index}
+              xs={12}
+              sm={6}
+              md={4}
             >
-                <Grid
-                item
-                xs={4}
-                >
-                    <MediaCard />
-                </Grid>
-
-                <Grid
-                item
-                xs={4}
-                >
-                    <MediaCard2 />
-                </Grid>
-
-                <Grid
-                item
-                xs={4}
-                >
-                    <MediaCard />
-                </Grid>
-
-                <Grid
-                item
-                xs={4}
-                >
-                    <MediaCard />
-                </Grid>
-
-                <Grid
-                item
-                xs={4}
-                >
-                    <MediaCard />
-                </Grid>
-
+                <MediaCard />
             </Grid>
-
+          ))}
+        </Grid>
         </Box>
     );
 }

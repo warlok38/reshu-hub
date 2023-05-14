@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from '../styled';
 import {Grid, Button, Typography} from '@mui/material';
 
@@ -11,14 +11,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export function Banner() {
 
-  const [open, setOpen] = React.useState(false);
+  const [ isModalVisible, setModalVisible] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleOpenModal = () => {
+    setModalVisible(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseModal = () => {
+    setModalVisible(false);
   };
 
     return(
@@ -48,13 +48,13 @@ export function Banner() {
                 <Button
                   variant="contained"
                   style={{ marginTop: 16 }}
-                  onClick={handleClickOpen}
+                  onClick={handleOpenModal}
                 >
                   Смотреть видео
                 </Button>
                 <Dialog
-                open={open}
-                onClose={handleClose}            
+                open={isModalVisible}
+                onClose={handleCloseModal}            
               >
                 <DialogTitle style={{ cursor: 'move' }} >
                   HEYYEYAAEYAAAEYAEYAA
@@ -62,17 +62,17 @@ export function Banner() {
                 <DialogContent>
                   <DialogContentText>
                     <div>
-                    <iframe width="560" height="315"
-                     src="https://www.youtube.com/embed/ZZ5LpwO-An4" 
-                     title="YouTube video player" 
-                     allow="accelerometer; autoplay; clipboard-write; 
-                     encrypted-media; gyroscope; picture-in-picture; web-share"
-                      ></iframe>
+                    <iframe width="720" height="480" 
+                    src="https://www.youtube.com/embed/ZZ5LpwO-An4" title="YouTube video player" 
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture; web-share" >
+
+                    </iframe>
                     </div>
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <Button autoFocus onClick={handleClose}>
+                  <Button autoFocus onClick={handleCloseModal}>
                     Cancel
                   </Button>
                 </DialogActions>
