@@ -4,7 +4,6 @@ import { Banner } from './Components/Banner';
 import { Target } from './Components/Target';
 import { Cards } from './Components/Cards';
 
-
 function AboutPage() {
   return (
     <S.Wrapper>
