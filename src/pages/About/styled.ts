@@ -6,7 +6,8 @@ export const Wrapper = styled('div')`
   gap: 64px;
 `;
 
-export const ImageContainer = styled('div')`
+
+export const Box = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,4 +26,9 @@ export const Image = styled('img')`
 
 export const ImageInner = styled('div')`
   padding: 0 56px;
+`;
+
+export const TextPoint = styled('div')`
+  list-style-type: square;
+
 `;
