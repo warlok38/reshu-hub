@@ -20,7 +20,7 @@ export function WrapperCards() {
             sm={6}
             md={4}
           >
-            <MediaCard />
+            <MediaCard id={card} />
           </Grid>
         ))}
       </Grid>
