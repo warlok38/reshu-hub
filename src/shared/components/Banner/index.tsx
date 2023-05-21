@@ -1,13 +1,13 @@
 import * as S from './styled';
 import { Grid } from '@mui/material';
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-interface BannerProps {
+type BannerProps = {
   imageSrc: string;
   children?: ReactNode;
-}
+};
 
-export const Banner: FC<BannerProps> = ({ imageSrc, children }) => {
+export const Banner = ({ imageSrc, children }: BannerProps) => {
   return (
     <S.ImageContainer>
       <S.ImageInner>

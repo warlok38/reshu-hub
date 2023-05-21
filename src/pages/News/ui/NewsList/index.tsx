@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Button, Grid } from '@mui/material';
 import { NewsCard } from 'entities/news';
 
-interface NewsListProps {
+type NewsListProps = {
   styleGrid?: React.CSSProperties;
-}
+};
 
-export const NewsList: FC<NewsListProps> = ({ styleGrid }) => {
+export const NewsList = ({ styleGrid }: NewsListProps) => {
   return (
     <Grid
       container
