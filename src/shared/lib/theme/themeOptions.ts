@@ -28,6 +28,7 @@ export const themeOptions: CssVarsThemeOptions = {
         },
         primary: {
           main: orange,
+          light: red,
         },
         secondary: {
           main: blue2,
