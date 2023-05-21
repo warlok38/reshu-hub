@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './styled';
 import { NewsBanner } from './NewsBanner';
 import { NewsList } from './NewsList';
-import { Tags, TagsData } from 'shared/components/Tags';
+import { NewsTags, TagsData } from 'pages/News/ui/NewsTags';
 
 const mockTags: TagsData[] = [
   { id: 1, name: 'Все' },
@@ -28,7 +28,7 @@ const NewsPage = () => {
         description="Маленький космический кубик с большим исследовательским потенциалом "
         newsId={1}
       />
-      <Tags
+      <NewsTags
         data={mockTags}
         stackProps={{ style: { marginTop: '64px' } }}
       />

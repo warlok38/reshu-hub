@@ -1,22 +1,22 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Stack, Typography } from '@mui/material';
 import * as S from './styled';
 import { ArrowRight } from '@mui/icons-material';
 import { Banner } from 'shared/components/Banner';
 
-interface NewsBannerProps {
+type NewsBannerProps = {
   imageSrc: string;
   title: string;
   description: string;
   newsId: number;
-}
+};
 
-export const NewsBanner: FC<NewsBannerProps> = ({
+export const NewsBanner = ({
   imageSrc,
   title,
   description,
   newsId,
-}) => {
+}: NewsBannerProps) => {
   return (
     <Banner imageSrc={imageSrc}>
       <Stack

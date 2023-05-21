@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Chip, ChipProps, Stack, StackProps } from '@mui/material';
 
 export type TagsData = {
@@ -6,13 +6,13 @@ export type TagsData = {
   name: string;
 };
 
-interface TagsProps {
+type NewsTagsProps = {
   data: TagsData[];
   stackProps?: StackProps;
   chipProps?: ChipProps;
-}
+};
 
-export const Tags: FC<TagsProps> = ({ data, stackProps, chipProps }) => {
+export const NewsTags = ({ data, stackProps, chipProps }: NewsTagsProps) => {
   const [selectedTags, setSelectedTags] = React.useState<TagsData[]>([]);
 
   const handleClickTag = (tag: TagsData, isSelected: boolean) => {
@@ -20,12 +20,6 @@ export const Tags: FC<TagsProps> = ({ data, stackProps, chipProps }) => {
       isSelected
         ? prevSelectedTags.filter((t) => t.id !== tag.id)
         : [...prevSelectedTags, tag]
-    );
-  };
-
-  const handleDelete = (id: number) => {
-    setSelectedTags((prevSelectedTags) =>
-      prevSelectedTags.filter((t) => t.id !== id)
     );
   };
 
@@ -47,11 +41,6 @@ export const Tags: FC<TagsProps> = ({ data, stackProps, chipProps }) => {
             color="warning"
             size="small"
             onClick={() => handleClickTag(item, isSelected)}
-            onDelete={() => {
-              if (isSelected) {
-                handleDelete(item.id);
-              }
-            }}
             {...chipProps}
           />
         );
