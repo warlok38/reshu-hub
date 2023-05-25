@@ -10,18 +10,34 @@ import { Header } from 'widgets/header';
 import { Footer } from 'widgets/footer';
 
 export function getRouter() {
-  const unprotectedRoutes = publicRoutes.map(({ index, path, element }) => {
-    return (
-      <Route
-        key={path}
-        path={path}
-        element={
-          <React.Suspense fallback={'...загрузка'}>{element}</React.Suspense>
-        }
-        index={index}
-      />
-    );
-  });
+  const unprotectedRoutes = publicRoutes.map(
+    ({ index, path, element, children }) => {
+      return index ? (
+        <Route
+          index={index}
+          key={path}
+          element={
+            <React.Suspense fallback={'...загрузка'}>{element}</React.Suspense>
+          }
+        />
+      ) : (
+        <Route
+          key={path}
+          path={path}
+          element={
+            <React.Suspense fallback={'...загрузка'}>{element}</React.Suspense>
+          }
+        >
+          {children?.map((children) => (
+            <Route
+              path={children.path}
+              element={children.element}
+            />
+          ))}
+        </Route>
+      );
+    }
+  );
 
   return createBrowserRouter(
     createRoutesFromElements([

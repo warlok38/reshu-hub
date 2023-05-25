@@ -16,9 +16,10 @@ import { headerRoutes } from 'shared/models';
 
 type MediaCard = {
   id: number;
+  name: string;
 };
 
-export function MediaCard({ id }: MediaCard) {
+export function MediaCard({ id, name }: MediaCard) {
   const navigate = useNavigate();
 
   return (
@@ -59,7 +60,7 @@ export function MediaCard({ id }: MediaCard) {
           letterSpacing="0.25px"
           component="div"
         >
-          Конкурс на получение стипендий Президента и Правительства РФ
+          {name}
         </Typography>
         <Typography
           sx={{ mt: '5px' }}

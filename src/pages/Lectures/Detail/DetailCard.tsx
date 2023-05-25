@@ -4,7 +4,12 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import HeadsetIcon from '@mui/icons-material/Headset';
 
-export function BlockInfo() {
+type DetailCardProps = {
+  id: number;
+  name: string;
+};
+
+export function DetailCard({ id, name }: DetailCardProps) {
   return (
     <Box
       sx={{
@@ -34,7 +39,7 @@ export function BlockInfo() {
           letterSpacing="0.5px"
           component="div"
         >
-          1 модуль Nice to meet you
+          {name}
         </Typography>
       </Box>
       <Box

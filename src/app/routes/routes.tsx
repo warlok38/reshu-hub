@@ -1,19 +1,19 @@
 import React from 'react';
 import { Navigate, RouteObject } from 'react-router-dom';
-import { headerRoutes, routes } from 'shared/models';
+import { headerRoutes } from 'shared/models';
 
 const News = React.lazy(() => import('pages/News'));
 const Events = React.lazy(() => import('pages/Events'));
 const Lectures = React.lazy(() => import('pages/Lectures'));
+const LecturesDetail = React.lazy(() => import('pages/Lectures/Detail'));
 const About = React.lazy(() => import('pages/About'));
 const NotFound = React.lazy(() => import('pages/NotFound'));
-const Detail = React.lazy(() => import('pages/Lectures/Detail'));
 
-export type Route = Omit<RouteObject, 'children'>;
+export type Route = RouteObject;
 
 export const publicRoutes: Route[] = [
   {
-    path: '/',
+    index: true,
     element: (
       <Navigate
         to={headerRoutes.news.path}
@@ -32,10 +32,10 @@ export const publicRoutes: Route[] = [
   {
     path: headerRoutes.lectures.path,
     element: <Lectures />,
-  },
-  {
-    path: routes.lecturesDetail.path,
-    element: <Detail />,
+    children: headerRoutes.lectures.nestedRoutes.map((props) => ({
+      ...props,
+      element: <LecturesDetail />,
+    })),
   },
   {
     path: headerRoutes.about.path,

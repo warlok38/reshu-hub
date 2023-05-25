@@ -1,6 +1,10 @@
 export const headerRoutes = {
-  news: { path: '/news', name: 'Новости' },
+  news: { path: '/news', name: 'Новости', index: true },
   events: { path: '/events', name: 'Мероприятия' },
-  lectures: { path: '/lectures', name: 'Лекции' },
+  lectures: {
+    path: '/lectures',
+    name: 'Лекции',
+    nestedRoutes: [{ path: ':id' }],
+  },
   about: { path: '/about', name: 'О нас' },
 } as const;
