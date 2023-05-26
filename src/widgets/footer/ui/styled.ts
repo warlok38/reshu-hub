@@ -4,7 +4,7 @@ export const Wrapper = styled('div')`
   width: 100%;
   padding: 38px 40px;
   background-color: ${({ theme }) => theme.palette.secondary.main};
-  color: ${({ theme }) => theme.palette.text.secondary};
+  color: ${({ theme }) => theme.palette.primary.contrastText};
 `;
 
 export const Content = styled('div')`

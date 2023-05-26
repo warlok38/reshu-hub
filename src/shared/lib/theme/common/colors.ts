@@ -1,10 +1,16 @@
 export const colors = {
-  grey1: '#1d1d1d',
-  grey2: '#797979',
-  grey3: '#bebebe',
-  white: '#ffffff',
-  orange: '#ff9764',
-  red: '#ff526d',
-  blue1: '#0bc3d1',
-  blue2: '#4783b5',
+  gray: {
+    0: '#ffffff',
+    1: '#1d1d1d',
+    2: '#797979',
+    3: '#bebebe',
+  },
+  orange: {
+    1: '#ff9764',
+  },
+  red: { 1: '#ff526d' },
+  blue: {
+    1: '#0bc3d1',
+    2: '#4783b5',
+  },
 };

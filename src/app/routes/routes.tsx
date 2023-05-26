@@ -6,6 +6,7 @@ const News = React.lazy(() => import('pages/News'));
 const Events = React.lazy(() => import('pages/Events'));
 const Lectures = React.lazy(() => import('pages/Lectures'));
 const LecturesDetail = React.lazy(() => import('pages/Lectures/Detail'));
+const Gallery = React.lazy(() => import('pages/Gallery'));
 const About = React.lazy(() => import('pages/About'));
 const NotFound = React.lazy(() => import('pages/NotFound'));
 
@@ -36,6 +37,10 @@ export const publicRoutes: Route[] = [
       ...props,
       element: <LecturesDetail />,
     })),
+  },
+  {
+    path: headerRoutes.gallery.path,
+    element: <Gallery />,
   },
   {
     path: headerRoutes.about.path,

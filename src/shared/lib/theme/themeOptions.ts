@@ -2,7 +2,7 @@ import { CssVarsThemeOptions } from '@mui/material/styles/experimental_extendThe
 import { colors } from './common/colors';
 import 'styled-components';
 
-const { white, orange, red, blue1, blue2, grey1, grey2, grey3 } = colors;
+const { gray, orange, red, blue } = colors;
 
 export const themeOptions: CssVarsThemeOptions = {
   spacing: 4,
@@ -19,19 +19,20 @@ export const themeOptions: CssVarsThemeOptions = {
     light: {
       palette: {
         text: {
-          primary: grey1,
-          secondary: white,
-          disabled: grey3,
+          primary: gray[1],
+          secondary: gray[2],
+          disabled: gray[3],
         },
         background: {
-          default: white,
+          default: gray[0],
         },
         primary: {
-          main: orange,
-          light: red,
+          main: orange[1],
+          light: red[1],
+          contrastText: gray[0],
         },
         secondary: {
-          main: blue2,
+          main: blue[2],
         },
       },
     },
