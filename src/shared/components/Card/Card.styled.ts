@@ -7,7 +7,13 @@ import {
 } from '@mui/material';
 
 export const Wrapper = styled(Card)`
+  display: flex;
+  flex-direction: column;
   border-radius: 20px;
+  height: 100%;
+`;
+export const Media = styled(CardMedia)`
+  min-height: 320px;
   ${({ onClick }) =>
     Boolean(onClick) &&
     `
@@ -15,12 +21,11 @@ export const Wrapper = styled(Card)`
     cursor: pointer;
     }`}
 `;
-export const Media = styled(CardMedia)`
-  height: 320px;
-`;
 export const Container = styled('div')`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   row-gap: ${({ theme }) => theme.spacing(3)};
   padding-top: ${({ theme }) => theme.spacing(4)};
   padding-bottom: ${({ theme }) => theme.spacing(4)};
@@ -32,6 +37,9 @@ export const Content = styled(CardContent)`
   padding: 0;
   padding-left: ${({ theme }) => theme.spacing(4)};
   padding-right: ${({ theme }) => theme.spacing(4)};
+  :last-child {
+    padding-bottom: 0;
+  }
 `;
 export const Actions = styled(CardActions)`
   padding: 0;

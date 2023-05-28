@@ -8,7 +8,7 @@ export const themeOptions: CssVarsThemeOptions = {
   spacing: 4,
   breakpoints: {
     values: {
-      xs: 428,
+      xs: 320,
       sm: 1024,
       md: 1263,
       lg: 1440,
@@ -28,13 +28,24 @@ export const themeOptions: CssVarsThemeOptions = {
         },
         primary: {
           main: orange[1],
-          light: red[1],
           contrastText: gray[0],
         },
         secondary: {
           main: blue[2],
         },
+        accent: {
+          main: red[1],
+        },
       },
     },
   },
 };
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    accent: Palette['primary'];
+  }
+  interface PaletteOptions {
+    accent?: PaletteOptions['primary'];
+  }
+}

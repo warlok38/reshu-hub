@@ -2,7 +2,7 @@ import { IconButton as MuiIconButton, styled, Typography } from '@mui/material';
 import { VisibilityOutlined } from '@mui/icons-material';
 
 export const Eye = styled(VisibilityOutlined)`
-  color: ${({ theme }) => theme.palette.primary.light};
+  color: ${({ theme }) => theme.palette.accent.main};
 `;
 
 export const NumberViews = styled(Typography)`
@@ -10,5 +10,5 @@ export const NumberViews = styled(Typography)`
 `;
 
 export const IconButton = styled(MuiIconButton)`
-  color: ${({ theme }) => theme.palette.primary.light};
+  color: ${({ theme }) => theme.palette.accent.main};
 `;

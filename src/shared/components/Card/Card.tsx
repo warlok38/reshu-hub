@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { CardProps as MUICardProps, Typography } from '@mui/material';
 import * as S from './Card.styled';
 import { TextTruncate } from '../TextTruncate';
@@ -8,6 +8,8 @@ export type CardProps = {
   description?: string;
   date?: string;
   image?: string;
+  actions?: ReactNode;
+  onClick?: () => void;
 } & MUICardProps;
 
 export const Card = ({
@@ -15,11 +17,16 @@ export const Card = ({
   description,
   date,
   image,
+  actions,
+  onClick,
   ...props
 }: CardProps) => {
   return (
     <S.Wrapper {...props}>
-      <S.Media image={image} />
+      <S.Media
+        image={image}
+        onClick={onClick}
+      />
       <S.Container>
         <S.Content>
           <TextTruncate
@@ -37,7 +44,7 @@ export const Card = ({
             {description}
           </TextTruncate>
         </S.Content>
-        <S.Actions>Actions</S.Actions>
+        {actions && <S.Actions>{actions}</S.Actions>}
       </S.Container>
     </S.Wrapper>
   );
