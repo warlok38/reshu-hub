@@ -30,6 +30,9 @@ export const themeOptions: CssVarsThemeOptions = {
           main: orange[1],
           contrastText: gray[0],
         },
+        primaryLighter: {
+          main: orange[2],
+        },
         secondary: {
           main: blue[2],
         },
@@ -44,8 +47,10 @@ export const themeOptions: CssVarsThemeOptions = {
 declare module '@mui/material/styles' {
   interface Palette {
     accent: Palette['primary'];
+    primaryLighter: Palette['primary'];
   }
   interface PaletteOptions {
     accent?: PaletteOptions['primary'];
+    primaryLighter: PaletteOptions['primary'];
   }
 }

@@ -30,6 +30,7 @@ export function getRouter() {
         >
           {children?.map((children) => (
             <Route
+              key={path}
               path={children.path}
               element={children.element}
             />

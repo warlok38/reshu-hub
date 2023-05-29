@@ -7,6 +7,7 @@ export const colors = {
   },
   orange: {
     1: '#ff9764',
+    2: '#f6a983',
   },
   red: { 1: '#ff526d' },
   blue: {
