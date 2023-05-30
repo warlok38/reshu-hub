@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Card } from 'shared/components/Card';
 import { Actions } from '../Actions';
-import { cardsGalleryMock } from 'shared/mock/gallery';
+import { cardsGalleryMock, galleryDetailMock } from 'shared/mock/gallery';
 import { Grid } from '@mui/material';
-import { GalleryDetail } from '../GalleryDetail';
+import { ModalDetail } from 'widgets/modalDetail';
 
 export const Cards = () => {
   const [activeGalleryId, _setActiveGalleryId] = useState<number | undefined>();
+  const detail = galleryDetailMock;
 
   const setActiveGalleryId = (id: number) => {
     _setActiveGalleryId(id);
@@ -62,9 +63,15 @@ export const Cards = () => {
         )}
       </Grid>
 
-      <GalleryDetail
+      <ModalDetail
         open={!!activeGalleryId}
         onClose={resetActiveGalleryId}
+        images={detail.images}
+        title={detail.title}
+        text={detail.text}
+        date={detail.date}
+        author={detail.author}
+        place={detail.place}
       />
     </React.Fragment>
   );

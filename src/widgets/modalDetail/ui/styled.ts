@@ -5,6 +5,7 @@ export const Dialog = styled(MUIDialog)`
     position: relative;
     overflow: visible;
     border-radius: 30px;
+    width: 100%;
   }
 `;
 
@@ -17,35 +18,19 @@ export const Wrapper = styled('div')`
   border-color: ${({ theme }) => theme.palette.primary.main};
 `;
 
-export const Carousel = styled('div')`
-  width: 710px;
-  border-radius: 30px;
-  background-color: lavender;
-  //TODO временное решение из за косяка плагина.
-  //После фикса раскоментить код ниже
-  ${({ theme }) => `
-   @media screen and (max-width: ${theme.breakpoints.values.md}px) {
-    width: 510px;
-   }
-  `}/* @media screen and (max-width: ${({ theme }) =>
-    theme.breakpoints.values.md}px) {
-    width: 510px;
-  } */
-`;
-
-export const Container = styled('div')`
+export const Container = styled('div')<{ onlyText?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   row-gap: ${({ theme }) => theme.spacing(4)};
   padding: ${({ theme }) => theme.spacing(4)};
-  padding-left: 0;
-  width: 404px;
+  padding-left: ${({ theme, onlyText }) => (onlyText ? theme.spacing(4) : 0)};
+  width: ${({ onlyText }) => (onlyText ? '100%' : '504px')};
   //TODO временное решение из за косяка плагина.
   //После фикса раскоментить код ниже
-  ${({ theme }) => `
+  ${({ theme, onlyText }) => `
    @media screen and (max-width: ${theme.breakpoints.values.md}px) {
-    width: 304px;
+    width: ${onlyText ? '100%' : '404px'};
    }
   `}/* @media screen and (max-width: ${({ theme }) =>
     theme.breakpoints.values.md}px) {
@@ -83,5 +68,11 @@ export const CloseButton = styled(IconButton)`
     border: 3px solid;
     border-color: ${({ theme }) => theme.palette.primary.contrastText};
     border-radius: 50%;
+  }
+
+  //TODO добавить screen and после фикса расширинея
+  @media (max-width: ${({ theme }) => theme.breakpoints.values.md}px) {
+    top: -60px;
+    right: -8px;
   }
 `;

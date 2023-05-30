@@ -3,7 +3,7 @@ import * as S from './styled';
 import { Typography } from '@mui/material';
 import { TextTruncate } from 'shared/components/TextTruncate';
 
-type GalleryContentProps = {
+type TextContentProps = {
   title: string;
   date?: string;
   place?: string;
@@ -11,13 +11,13 @@ type GalleryContentProps = {
   text?: string;
 };
 
-export const GalleryContent = ({
+export const TextContent = ({
   title,
   date,
   place,
   author,
   text,
-}: GalleryContentProps) => {
+}: TextContentProps) => {
   return (
     <S.Wrapper>
       <TextTruncate
