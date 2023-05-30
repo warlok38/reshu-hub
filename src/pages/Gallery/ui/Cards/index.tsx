@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from 'shared/components/Card';
-import { Actions } from '../Actions';
-import { cardsGalleryMock, galleryDetailMock } from 'shared/mock/gallery';
+import { CardActions } from 'entities/cardActions';
+import { cardsGalleryMock, galleryDetailMock } from 'shared/mocks/gallery';
 import { Grid } from '@mui/material';
 import { ModalDetail } from 'widgets/modalDetail';
 
@@ -48,12 +48,11 @@ export const Cards = () => {
                 date={date}
                 image={image}
                 actions={
-                  <Actions
+                  <CardActions
                     likeCount={likeCount}
                     hasOwnLike={hasOwnLike}
                     commentCount={commentCount}
                     hasOwnComments={hasOwnComments}
-                    hasShare
                   />
                 }
                 onClick={() => setActiveGalleryId(id)}
