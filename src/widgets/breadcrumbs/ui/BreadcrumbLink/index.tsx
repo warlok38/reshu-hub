@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { NavLinkProps } from 'react-router-dom';
-import * as S from './Link.styled';
+import * as S from './styled';
 
-export const Link = (props: PropsWithChildren<NavLinkProps>) => {
+export const BreadcrumbLink = (props: PropsWithChildren<NavLinkProps>) => {
   return <S.Wrapper {...props}>{props.children}</S.Wrapper>;
 };

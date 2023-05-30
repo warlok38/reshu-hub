@@ -4,7 +4,11 @@ export const headerRoutes = {
   lectures: {
     path: '/lectures',
     name: 'Лекции',
-    nestedRoutes: [{ path: ':id' }],
+    nestedRoutes: [
+      { path: ':id' },
+      { path: ':id/edit', name: 'Редактирование' },
+      { path: 'new', name: 'Создание' },
+    ],
   },
   gallery: {
     path: '/gallery',

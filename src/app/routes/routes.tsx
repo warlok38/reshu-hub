@@ -33,10 +33,24 @@ export const publicRoutes: Route[] = [
   {
     path: headerRoutes.lectures.path,
     element: <Lectures />,
-    children: headerRoutes.lectures.nestedRoutes.map((props) => ({
-      ...props,
-      element: <LecturesDetail />,
-    })),
+    handle: { crumb: headerRoutes.lectures.path },
+    children: [
+      {
+        path: ':id',
+        element: <LecturesDetail />,
+        handle: { crumb: ':id' },
+      },
+      {
+        path: ':id/edit',
+        element: <div>Edit page</div>,
+        handle: { crumb: ':id/edit' },
+      },
+      {
+        path: 'new',
+        element: <div>New page</div>,
+        handle: { crumb: 'new' },
+      },
+    ],
   },
   {
     path: headerRoutes.gallery.path,

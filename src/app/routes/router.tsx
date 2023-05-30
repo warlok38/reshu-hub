@@ -11,7 +11,7 @@ import { Footer } from 'widgets/footer';
 
 export function getRouter() {
   const unprotectedRoutes = publicRoutes.map(
-    ({ index, path, element, children }) => {
+    ({ index, path, element, handle, children }) => {
       return index ? (
         <Route
           index={index}
@@ -24,6 +24,7 @@ export function getRouter() {
         <Route
           key={path}
           path={path}
+          handle={handle}
           element={
             <React.Suspense fallback={'...загрузка'}>{element}</React.Suspense>
           }
@@ -31,6 +32,7 @@ export function getRouter() {
           {children?.map((children) => (
             <Route
               key={path}
+              handle={children.handle}
               path={children.path}
               element={children.element}
             />
