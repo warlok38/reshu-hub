@@ -3,17 +3,8 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { tags } from 'shared/mocks/EventsTags';
 
-const tags: string[] = [
-  'Все теги',
-  'Новые',
-  'О космосе',
-  'О спутнике',
-  'Математика',
-  'Програмирование',
-  'Ракетостроение',
-  'Популярные',
-];
 export function TagsWrapper() {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const allSelected = selectedTags.length === tags.length - 1;

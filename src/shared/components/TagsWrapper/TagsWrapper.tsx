@@ -3,25 +3,36 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { tags } from 'shared/mocks/EventsTags';
 
-const tags: string[] = [
-  'Все теги',
-  'Выставка',
-  'Конкурс',
-  'Концерт',
-  'Круглый стол',
-  'Мастер-класс',
-  'Олимпиада',
-  'Открытая лекция',
-];
-
-export function TagsWraper() {
+export function TagsWrapper() {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
+  const allSelected = selectedTags.length === tags.length - 1;
+
+  const handleClick = (tag: string) => {
+    setSelectedTags((prevSelectedTags) => {
+      if (tag === 'Все теги') {
+        return allSelected ? [] : [...tags.slice(1)];
+      } else {
+        const isSelected = prevSelectedTags.includes(tag);
+        if (isSelected && allSelected) {
+          return prevSelectedTags.filter((t) => t !== tag);
+        } else if (!isSelected && prevSelectedTags.length === tags.length - 2) {
+          return [...tags.slice(1)];
+        } else {
+          return isSelected
+            ? prevSelectedTags.filter((t) => t !== tag)
+            : [...prevSelectedTags, tag];
+        }
+      }
+    });
+  };
   const handleDelete = (tag: string) => {
     setSelectedTags((prevSelectedTags) =>
       prevSelectedTags.filter((t) => t !== tag)
     );
   };
+
   return (
     <Box sx={{ width: '100%', mb: '32px' }}>
       <Stack
@@ -37,7 +48,7 @@ export function TagsWraper() {
           Теги:
         </Typography>
         {tags.map((tag) => {
-          const isSelected = selectedTags.includes(tag);
+          const isSelected = allSelected || selectedTags.includes(tag);
           return (
             <Chip
               key={tag}
@@ -45,13 +56,7 @@ export function TagsWraper() {
               variant={isSelected ? 'filled' : 'outlined'}
               color="warning"
               size="small"
-              onClick={() =>
-                setSelectedTags((prevSelectedTags) =>
-                  isSelected
-                    ? prevSelectedTags.filter((t) => t !== tag)
-                    : [...prevSelectedTags, tag]
-                )
-              }
+              onClick={() => handleClick(tag)}
               onDelete={isSelected ? () => handleDelete(tag) : undefined}
             />
           );
