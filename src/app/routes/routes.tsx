@@ -3,7 +3,8 @@ import { Navigate, RouteObject } from 'react-router-dom';
 import { headerRoutes } from 'shared/models';
 
 const News = React.lazy(() => import('pages/News'));
-const Events = React.lazy(() => import('pages/Events'));
+const Events = React.lazy(() => import('pages/Events/List'));
+const EventsDetail = React.lazy(() => import('pages/Events/Detail'));
 const Materials = React.lazy(() => import('pages/Materials/List'));
 const MaterialsDetail = React.lazy(() => import('pages/Materials/Detail'));
 const Gallery = React.lazy(() => import('pages/Gallery'));
@@ -29,6 +30,12 @@ export const publicRoutes: Route[] = [
   {
     path: headerRoutes.events.path,
     element: <Events />,
+    children: [
+      {
+        path: ':id',
+        element: <EventsDetail />,
+      },
+    ],
   },
   {
     path: headerRoutes.materials.path,
