@@ -35,14 +35,16 @@ export const Card = ({
           >
             {title}
           </TextTruncate>
-          <Typography variant="body2">{date}</Typography>
-          <TextTruncate
-            variant="body2"
-            color="text.secondary"
-            lineCount={3}
-          >
-            {description}
-          </TextTruncate>
+          {date && <Typography variant="body2">{date}</Typography>}
+          {description && (
+            <TextTruncate
+              variant="body2"
+              color="text.secondary"
+              lineCount={3}
+            >
+              {description}
+            </TextTruncate>
+          )}
         </S.Content>
         {actions && <S.Actions>{actions}</S.Actions>}
       </S.Container>

@@ -26,17 +26,21 @@ export const TextContent = ({
       >
         {title}
       </TextTruncate>
-      <S.Description>
-        <Typography variant="h6">{date}</Typography>
-        <Typography variant="h6">{place}</Typography>
-      </S.Description>
-      <Typography variant="caption">Автор: {author}</Typography>
-      <Typography
-        variant="body1"
-        mt={2}
-      >
-        {text}
-      </Typography>
+      {(date || place) && (
+        <S.Description>
+          {date && <Typography variant="h6">{date}</Typography>}
+          {place && <Typography variant="h6">{place}</Typography>}
+        </S.Description>
+      )}
+      {author && <Typography variant="caption">Автор: {author}</Typography>}
+      {text && (
+        <Typography
+          variant="body1"
+          mt={2}
+        >
+          {text}
+        </Typography>
+      )}
     </S.Wrapper>
   );
 };
