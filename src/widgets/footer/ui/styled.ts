@@ -19,9 +19,3 @@ export const Content = styled('div')`
     flex-direction: column;
   }
 `;
-
-export const Logo = styled('div')`
-  width: 263px;
-  height: 141px;
-  background-color: ${({ theme }) => theme.palette.background.default};
-`;
