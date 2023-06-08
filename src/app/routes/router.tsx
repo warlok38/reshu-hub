@@ -3,11 +3,10 @@ import { publicRoutes } from './routes';
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
-import { Header } from 'widgets/header';
-import { Footer } from 'widgets/footer';
 
 export function getRouter() {
   const unprotectedRoutes = publicRoutes.map(
@@ -16,18 +15,14 @@ export function getRouter() {
         <Route
           index={index}
           key={path}
-          element={
-            <React.Suspense fallback={'...загрузка'}>{element}</React.Suspense>
-          }
+          element={element}
         />
       ) : (
         <Route
           key={path}
           path={path}
           handle={handle}
-          element={
-            <React.Suspense fallback={'...загрузка'}>{element}</React.Suspense>
-          }
+          element={element}
         >
           {children?.map((children) => (
             <Route
@@ -47,11 +42,10 @@ export function getRouter() {
       <Route
         path="/"
         element={
-          <React.Suspense fallback={'...загрузка'}>
-            <Layout
-              footer={<Footer />}
-              header={<Header />}
-            />
+          <React.Suspense fallback={<Layout />}>
+            <Layout>
+              <Outlet />
+            </Layout>
           </React.Suspense>
         }
       >

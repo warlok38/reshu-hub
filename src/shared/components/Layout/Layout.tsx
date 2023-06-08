@@ -1,21 +1,20 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import { PageWrap } from 'shared/components/PageWrap';
 import * as S from './Layout.styled';
+import { Header } from 'widgets/header';
+import { Footer } from 'widgets/footer';
+import { GlobalLoader } from '../GlobalLoader';
 
 type LayoutProps = {
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
+  children?: React.ReactNode;
 };
 
-export function Layout({ header, footer }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   return (
     <S.Wrapper>
-      {header}
-      <PageWrap>
-        <Outlet />
-      </PageWrap>
-      {footer}
+      <Header />
+      <PageWrap>{children || <GlobalLoader />}</PageWrap>
+      <Footer />
     </S.Wrapper>
   );
 }
