@@ -13,6 +13,42 @@ export const materialsMock = [
     hasOwnLike: false,
     hasOwnComments: false,
   },
+  {
+    id: 2,
+    title: 'Методический материал 2',
+    description: 'Описание методического материала',
+    date: '28 Апреля 2023',
+    image:
+      'https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png',
+    likeCount: 0,
+    commentCount: 0,
+    hasOwnLike: false,
+    hasOwnComments: false,
+  },
+  {
+    id: 3,
+    title: 'Методический материал 3',
+    description: 'Описание методического материала',
+    date: '28 Апреля 2023',
+    image:
+      'https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png',
+    likeCount: 0,
+    commentCount: 0,
+    hasOwnLike: false,
+    hasOwnComments: false,
+  },
+  {
+    id: 4,
+    title: 'Методический материал 4',
+    description: 'Описание методического материала',
+    date: '28 Апреля 2023',
+    image:
+      'https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png',
+    likeCount: 0,
+    commentCount: 0,
+    hasOwnLike: false,
+    hasOwnComments: false,
+  },
 ];
 
 export const materialsDetailMock = [
