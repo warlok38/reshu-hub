@@ -25,6 +25,7 @@ export const themeOptions: CssVarsThemeOptions = {
         },
         background: {
           default: gray[0],
+          paper: gray[4],
         },
         primary: {
           main: orange[1],

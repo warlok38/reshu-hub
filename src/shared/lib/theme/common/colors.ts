@@ -4,6 +4,7 @@ export const colors = {
     1: '#1d1d1d',
     2: '#797979',
     3: '#bebebe',
+    4: '#f5f5f5',
   },
   orange: {
     1: '#ff9764',

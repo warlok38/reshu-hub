@@ -1,103 +1,58 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import HeadsetIcon from '@mui/icons-material/Headset';
+import { Typography, Box, Grid } from '@mui/material';
+import { Material } from './Material';
 
 type DetailCardProps = {
   id: number;
   name: string;
+  materials: {
+    id: number;
+    name: string;
+    type: string;
+    size: number;
+  }[];
 };
 
-export function DetailCard({ id, name }: DetailCardProps) {
+export function DetailCard({ id, name, materials }: DetailCardProps) {
   return (
     <Box
-      sx={{
-        height: 'auto',
-        mt: '32px',
-        mb: '32px',
-        bgcolor: 'white',
-        boxShadow: 5,
-        borderRadius: 6,
-        minWidth: 300,
-      }}
+      sx={(theme) => ({
+        width: '100%',
+        padding: 4,
+        backgroundColor: theme.palette.background.paper,
+        borderRadius: 5,
+      })}
     >
-      <Box
-        sx={{
-          height: 'auto',
-          mt: '16px',
-          ml: '16px',
-          mb: '24px',
-        }}
+      <Typography
+        sx={{ mb: '16px' }}
+        gutterBottom
+        color="#FF9764"
+        fontWeight="700"
+        fontSize="48px"
+        letterSpacing="0.5px"
+        component="div"
       >
-        <Typography
-          sx={{ mb: '16px' }}
-          gutterBottom
-          color="#FF9764"
-          fontWeight="700"
-          fontSize="48px"
-          letterSpacing="0.5px"
-          component="div"
-        >
-          {name}
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          pb: '16px',
-          height: 'auto',
-          mt: '16px',
-          ml: '32px',
-          mb: '24px',
-        }}
+        {name}
+      </Typography>
+      <Grid
+        container
+        spacing={4}
       >
-        <Typography
-          sx={{ mb: '16px' }}
-          gutterBottom
-          color="#000000"
-          fontWeight="500"
-          fontSize="20px"
-          letterSpacing="0.25px"
-          lineHeight="25px"
-          component="div"
-        >
-          <PictureAsPdfIcon sx={{ mr: '24px' }} />
-          Text "Hello, people
-        </Typography>
-        <Typography
-          sx={{ mb: '16px' }}
-          gutterBottom
-          color="#000000"
-          fontWeight="500"
-          fontSize="20px"
-          letterSpacing="0.25px"
-          component="div"
-        >
-          <YouTubeIcon sx={{ mr: '24px' }} /> видео "Nice to meet you"Файл
-        </Typography>
-        <Typography
-          sx={{ mb: '16px' }}
-          gutterBottom
-          color="#000000"
-          fontWeight="500"
-          fontSize="20px"
-          letterSpacing="0.25px"
-          component="div"
-        >
-          <HeadsetIcon sx={{ mr: '24px' }} /> Nice to meet youФайл
-        </Typography>
-        <Typography
-          sx={{ mb: '16px' }}
-          gutterBottom
-          color="#000000"
-          fontWeight="500"
-          fontSize="20px"
-          letterSpacing="0.25px"
-          component="div"
-        >
-          <PictureAsPdfIcon sx={{ mr: '24px' }} /> Грамматика "Артикль"Файл
-        </Typography>
-      </Box>
+        {materials.map(({ id, name, type, size }) => (
+          <Grid
+            key={id}
+            item
+            xs={12}
+          >
+            <Material
+              id={id}
+              name={name}
+              type={type}
+              size={size}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }

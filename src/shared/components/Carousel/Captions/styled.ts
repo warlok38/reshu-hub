@@ -8,7 +8,7 @@ export const Wrapper = styled('div')`
   position: absolute;
   top: 0;
   left: 0;
-  max-width: 731px;
+  max-width: 740px;
   width: 100%;
   height: 100%;
   padding-left: ${({ theme }) => theme.spacing(14)};
@@ -27,6 +27,7 @@ export const TitleWrapper = styled('div')`
   flex-direction: column;
   row-gap: ${({ theme }) => theme.spacing(4)};
   color: ${({ theme }) => theme.palette.primary.contrastText};
+  white-space: pre-wrap;
 `;
 
 export const Extra = styled('div')`
