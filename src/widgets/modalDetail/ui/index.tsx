@@ -46,7 +46,6 @@ export const ModalDetail = ({
               text={text}
             />
           </Scrollbars>
-          <S.Actions />
         </S.Container>
       </S.Wrapper>
 

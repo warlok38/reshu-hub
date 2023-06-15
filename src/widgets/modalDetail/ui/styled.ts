@@ -7,6 +7,7 @@ export const Dialog = styled(MUIDialog)`
     border-radius: 30px;
     width: 100%;
     max-width: 1104px;
+    max-height: calc(100% - 128px);
   }
 `;
 
@@ -38,12 +39,6 @@ export const Container = styled('div')<{ onlyText?: boolean }>`
     theme.breakpoints.values.md}px) {
     width: 510px;
   } */
-`;
-
-//TODO: добавить экшен кнопки
-export const Actions = styled('div')`
-  height: 32px;
-  background-color: ${({ theme }) => theme.palette.text.disabled};
 `;
 
 export const Thumb = styled('div')`

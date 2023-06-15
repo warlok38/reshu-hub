@@ -31,6 +31,7 @@ export const TextContent = ({
         <Typography
           variant="body1"
           mt={2}
+          whiteSpace="pre-wrap"
         >
           {text}
         </Typography>
