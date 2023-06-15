@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './styled';
 import { Typography } from '@mui/material';
-import { TextTruncate } from 'shared/components/TextTruncate';
 
 type TextContentProps = {
   title: string;
@@ -20,12 +19,7 @@ export const TextContent = ({
 }: TextContentProps) => {
   return (
     <S.Wrapper>
-      <TextTruncate
-        variant="h4"
-        lineCount={3}
-      >
-        {title}
-      </TextTruncate>
+      <Typography variant="h4">{title}</Typography>
       {(date || place) && (
         <S.Description>
           {date && <Typography variant="h6">{date}</Typography>}

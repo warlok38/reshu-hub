@@ -6,6 +6,7 @@ export const Dialog = styled(MUIDialog)`
     overflow: visible;
     border-radius: 30px;
     width: 100%;
+    max-width: 1104px;
   }
 `;
 
@@ -25,12 +26,13 @@ export const Container = styled('div')<{ onlyText?: boolean }>`
   row-gap: ${({ theme }) => theme.spacing(4)};
   padding: ${({ theme }) => theme.spacing(4)};
   padding-left: ${({ theme, onlyText }) => (onlyText ? theme.spacing(4) : 0)};
-  width: ${({ onlyText }) => (onlyText ? '100%' : '504px')};
+  width: 100%;
+  max-width: ${({ onlyText }) => (onlyText ? 'unset' : '404px')};
   //TODO временное решение из за косяка плагина.
   //После фикса раскоментить код ниже
   ${({ theme, onlyText }) => `
    @media screen and (max-width: ${theme.breakpoints.values.md}px) {
-    width: ${onlyText ? '100%' : '404px'};
+    max-width: ${onlyText ? 'unset' : '354px'};
    }
   `}/* @media screen and (max-width: ${({ theme }) =>
     theme.breakpoints.values.md}px) {

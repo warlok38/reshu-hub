@@ -27,7 +27,6 @@ export const Cards = () => {
           ({
             id,
             title,
-            description,
             date,
             image,
             likeCount,
@@ -43,8 +42,7 @@ export const Cards = () => {
             >
               <Card
                 key={id}
-                title={id + ' ' + title}
-                description={description}
+                title={title}
                 date={date}
                 image={image}
                 actions={
