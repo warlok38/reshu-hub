@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import * as S from './styled';
-import { TextTruncate } from 'shared/components/TextTruncate';
+import { Typography } from '@mui/material';
 
 type CaptionProps = {
   title?: string;
@@ -16,22 +16,21 @@ export const Captions = ({ title, description, extra }: CaptionProps) => {
     <S.Wrapper>
       <S.TitleWrapper>
         {title && (
-          <TextTruncate
+          <Typography
             variant="h3"
             fontWeight={700}
           >
             {title}
-          </TextTruncate>
+          </Typography>
         )}
         {description && (
-          <TextTruncate
+          <Typography
             variant="body1"
             fontWeight={700}
-            lineCount={2}
             maxWidth="80%"
           >
             {description}
-          </TextTruncate>
+          </Typography>
         )}
       </S.TitleWrapper>
 

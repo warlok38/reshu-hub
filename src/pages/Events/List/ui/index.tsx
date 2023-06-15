@@ -1,8 +1,12 @@
-import React from 'react';
-import { Box, Tab, Tabs, Typography } from '@mui/material';
+import React, { useCallback } from 'react';
+import { Box, Button, Tab, Tabs, Typography } from '@mui/material';
 import { Cards } from './Cards';
 import { useOutlet } from 'react-router';
-import { eventsMock } from 'shared/mocks/events';
+import { eventsCarouselListMock, eventsMock } from 'shared/mocks/events';
+import { Carousel } from 'shared/components/Carousel';
+import { headerRoutes } from 'shared/models';
+import { useNavigate } from 'react-router';
+import { ArrowRight } from '@mui/icons-material';
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -23,8 +27,17 @@ function TabPanel({ children, value }: TabPanelProps) {
 
 const EventsPage = () => {
   const outlet = useOutlet();
+  const navigate = useNavigate();
+
   const [value, setValue] = React.useState<'actual' | 'past'>('actual');
   const list = eventsMock;
+
+  const onClickDetail = useCallback(
+    (id: number) => {
+      navigate(`${headerRoutes.events.path}/${id}`);
+    },
+    [navigate]
+  );
 
   const changeTabsHandler = (
     event: React.SyntheticEvent,
@@ -39,6 +52,24 @@ const EventsPage = () => {
 
   return (
     <div>
+      <Box
+        sx={{ height: 741 }}
+        mb={(theme) => theme.spacing(6)}
+      >
+        <Carousel
+          list={eventsCarouselListMock}
+          autoPlay
+          interval={5000}
+          extra={
+            <Button
+              variant="contained"
+              onClick={() => onClickDetail(1)}
+            >
+              Подробнее <ArrowRight />
+            </Button>
+          }
+        />
+      </Box>
       <Typography
         variant="h3"
         mb={(theme) => theme.spacing(6)}
@@ -63,7 +94,10 @@ const EventsPage = () => {
           </Tabs>
         </Box>
         <TabPanel value={value}>
-          <Cards list={list[value]} />
+          <Cards
+            list={list[value]}
+            onClickDetail={onClickDetail}
+          />
         </TabPanel>
       </Box>
     </div>

@@ -2,17 +2,14 @@ import React from 'react';
 import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
 import { Grid } from '@mui/material';
-import { headerRoutes } from 'shared/models';
-import { useNavigate } from 'react-router';
 import { eventsMock } from 'shared/mocks/events';
 
 type CardsProps = {
   list: typeof eventsMock.actual | typeof eventsMock.past;
+  onClickDetail: (id: number) => void;
 };
 
-export const Cards = ({ list }: CardsProps) => {
-  const navigate = useNavigate();
-
+export const Cards = ({ list, onClickDetail }: CardsProps) => {
   return (
     <Grid
       container
@@ -50,7 +47,7 @@ export const Cards = ({ list }: CardsProps) => {
                   hasOwnComments={hasOwnComments}
                 />
               }
-              onClick={() => navigate(`${headerRoutes.events.path}/${id}`)}
+              onClick={() => onClickDetail(id)}
             />
           </Grid>
         )

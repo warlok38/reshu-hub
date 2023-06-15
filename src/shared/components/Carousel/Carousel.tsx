@@ -9,20 +9,20 @@ import { TextTruncate } from '../TextTruncate';
 import { Captions } from './Captions';
 
 export type IndicatorVariants = 'default' | 'custom';
-export type ImageListType = { link: string }[];
+export type ImageListType = {
+  link: string;
+  title?: string;
+  description?: string;
+}[];
 
 type CarouselProps = {
   list?: ImageListType;
-  title?: string;
-  description?: string;
   extra?: ReactNode;
   indicatorVariant?: IndicatorVariants;
 } & MUICarouselProps;
 
 export const Carousel = ({
   list,
-  title,
-  description,
   extra,
   indicatorVariant = 'default',
   ...props
@@ -32,7 +32,6 @@ export const Carousel = ({
   return (
     <S.Wrapper>
       <S.CarouselWrapper
-        {...props}
         autoPlay={false}
         className={CAROUSEL}
         indicatorContainerProps={{
@@ -51,19 +50,28 @@ export const Carousel = ({
         indicators={!isEmptyOrOne}
         navButtonsAlwaysInvisible={isEmptyOrOne}
         height="100%"
+        {...props}
       >
         {list && !isEmpty(list) ? (
-          list.map(({ link }, i) => (
-            <Box
-              key={i}
-              component="img"
-              src={link}
-              sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
-            />
+          list.map(({ link, title, description }, i) => (
+            <>
+              <Box
+                key={i}
+                component="img"
+                src={link}
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  background: 'linear-gradient(black, transparent)',
+                }}
+              />
+              <Captions
+                title={title}
+                description={description}
+                extra={extra}
+              />
+            </>
           ))
         ) : (
           <Box
@@ -81,11 +89,6 @@ export const Carousel = ({
           </Box>
         )}
       </S.CarouselWrapper>
-      <Captions
-        title={title}
-        description={description}
-        extra={extra}
-      />
     </S.Wrapper>
   );
 };
