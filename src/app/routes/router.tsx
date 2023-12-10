@@ -7,6 +7,8 @@ import {
   Route,
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
+const Registration = React.lazy(() => import('pages/Registration'));
+const Login = React.lazy(() => import('pages/Login'));
 
 export function getRouter() {
   const unprotectedRoutes = publicRoutes.map(
@@ -51,6 +53,22 @@ export function getRouter() {
       >
         {unprotectedRoutes}
       </Route>,
+      <Route
+        path="/login"
+        element={
+          <React.Suspense>
+            <Login />
+          </React.Suspense>
+        }
+      />,
+      <Route
+        path="/registration"
+        element={
+          <React.Suspense>
+            <Registration />
+          </React.Suspense>
+        }
+      />,
     ])
   );
 }

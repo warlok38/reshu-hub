@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Grid } from '@mui/material';
 import { NewsCard } from 'entities/news';
+import { News } from 'shared/mocks/news';
 
 type NewsListProps = {
   styleGrid?: React.CSSProperties;
@@ -22,7 +23,7 @@ export const NewsList = ({ styleGrid }: NewsListProps) => {
           md={4}
           key={index}
         >
-          <NewsCard />
+          <NewsCard news={{ id: index } as News} />
         </Grid>
       ))}
       <Button

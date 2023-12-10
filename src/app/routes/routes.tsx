@@ -10,6 +10,7 @@ const MaterialsDetail = React.lazy(() => import('pages/Materials/Detail'));
 const Gallery = React.lazy(() => import('pages/Gallery'));
 const About = React.lazy(() => import('pages/About'));
 const NotFound = React.lazy(() => import('pages/NotFound'));
+const NewsDetail = React.lazy(() => import('pages/NewsDetail'));
 
 export type Route = RouteObject;
 
@@ -26,6 +27,12 @@ export const publicRoutes: Route[] = [
   {
     path: headerRoutes.news.path,
     element: <News />,
+    children: [
+      {
+        path: ':id',
+        element: <NewsDetail />,
+      },
+    ],
   },
   {
     path: headerRoutes.events.path,
