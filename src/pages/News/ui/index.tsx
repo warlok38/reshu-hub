@@ -3,6 +3,7 @@ import * as S from './styled';
 import { NewsBanner } from './NewsBanner';
 import { NewsList } from './NewsList';
 import { NewsTags, TagsData } from 'pages/News/ui/NewsTags';
+import { useOutlet } from 'react-router';
 
 const mockTags: TagsData[] = [
   { id: 1, name: 'Все' },
@@ -20,6 +21,12 @@ const mockTags: TagsData[] = [
 ];
 
 const NewsPage = () => {
+  const outlet = useOutlet();
+
+  if (outlet) {
+    return outlet;
+  }
+
   return (
     <S.Wrapper>
       <NewsBanner
