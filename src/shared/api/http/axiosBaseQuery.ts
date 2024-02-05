@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from 'axios';
 import type { BaseQueryFn } from '@reduxjs/toolkit/query';
-import type {
+import {
   BaseQueryApi,
   QueryReturnValue,
 } from '@reduxjs/toolkit/src/query/baseQueryTypes';
@@ -14,7 +14,7 @@ import { createServerInternalError } from 'shared/lib/errors/serverInternalError
 import { HttpErrorCodesEnum } from 'shared/lib/errors/types';
 import { createUnauthorizedError } from 'shared/lib/errors/unauthorizedError';
 import { getDataFromResponse } from 'shared/utils/getDataFromResponse';
-import { axiosInstanse } from './axiosInstance';
+import { axiosInstanсe } from './axiosInstance';
 
 export type AxiosBaseQueryArgs = {
   url: string;
@@ -24,9 +24,11 @@ export type AxiosBaseQueryArgs = {
   headers?: AxiosRequestConfig['headers'];
 };
 
-export type AxiosBaseQueryMeta = {
-  message?: string;
-};
+//TODO разобраться any. Если делать не any ломается queryFn
+// export type AxiosBaseQueryMeta = {
+//   message?: string;
+// };
+export type AxiosBaseQueryMeta = any;
 
 function createErrorFromAxiosResponse({ data, status }: AxiosResponse) {
   const map = {
@@ -53,15 +55,16 @@ function createErrorFromAxiosResponse({ data, status }: AxiosResponse) {
 
 export function axiosBaseQuery(
   { baseUrl }: { baseUrl: string } = { baseUrl: '' }
+  // eslint-disable-next-line
 ): BaseQueryFn<AxiosBaseQueryArgs, unknown, AppError, {}, AxiosBaseQueryMeta> {
   return async function (
     { url, method, data, params, headers }: AxiosBaseQueryArgs,
-    api: BaseQueryApi,
-    extraOptions: Record<string, string>
+    api: BaseQueryApi, // eslint-disable-line @typescript-eslint/no-unused-vars
+    extraOptions: Record<string, string> // eslint-disable-line @typescript-eslint/no-unused-vars
   ): Promise<QueryReturnValue<unknown, AppError, AxiosBaseQueryMeta>> {
     try {
       const result: AxiosResponse<ApiResponseEntity<unknown>> =
-        await axiosInstanse({
+        await axiosInstanсe({
           url: baseUrl + url,
           method,
           data,

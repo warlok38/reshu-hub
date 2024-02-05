@@ -30,6 +30,4 @@ export function createBadRequestError(
   };
 }
 
-export const isBadRequestError = isError<BadRequestError>(
-  BadRequestErrorSchema
-);
+export const isBadRequestError = isError(BadRequestErrorSchema);

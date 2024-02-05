@@ -30,6 +30,4 @@ export function createServerInternalError(
   };
 }
 
-export const isServerInternalError = isError<ServerInternalError>(
-  ServerInternalErrorSchema
-);
+export const isServerInternalError = isError(ServerInternalErrorSchema);

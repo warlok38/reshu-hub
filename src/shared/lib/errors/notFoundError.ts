@@ -30,4 +30,4 @@ export function createNotFoundError(
   };
 }
 
-export const isNotFoundError = isError<NotFoundError>(NotFoundErrorSchema);
+export const isNotFoundError = isError(NotFoundErrorSchema);

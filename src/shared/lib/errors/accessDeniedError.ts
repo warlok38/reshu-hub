@@ -30,6 +30,4 @@ export function createAccessDeniedError(
   };
 }
 
-export const isAccessDeniedError = isError<AccessDeniedError>(
-  AccessDeniedErrorSchema
-);
+export const isAccessDeniedError = isError(AccessDeniedErrorSchema);

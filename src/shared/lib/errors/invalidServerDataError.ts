@@ -25,6 +25,4 @@ export function createInvalidServerDataError(
   };
 }
 
-export const isInvalidServerDataError = isError<InvalidServerDataError>(
-  InvalidServerDataErrorSchema
-);
+export const isInvalidServerDataError = isError(InvalidServerDataErrorSchema);

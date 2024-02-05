@@ -30,6 +30,4 @@ export function createUnauthorizedError(
   };
 }
 
-export const isUnauthorizedError = isError<UnauthorizedError>(
-  UnauthorizedErrorSchema
-);
+export const isUnauthorizedError = isError(UnauthorizedErrorSchema);

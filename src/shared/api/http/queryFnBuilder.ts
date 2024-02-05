@@ -1,11 +1,13 @@
-import { BaseQueryApi } from '@reduxjs/toolkit/dist/query';
 import { BaseQueryFn } from '@reduxjs/toolkit/query';
 import {
   AxiosBaseQueryArgs,
   AxiosBaseQueryMeta,
   axiosBaseQuery,
 } from './axiosBaseQuery';
-import { BaseQueryExtraOptions } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
+import {
+  BaseQueryApi,
+  BaseQueryExtraOptions,
+} from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import { QueryReturnValue } from '@reduxjs/toolkit/src/query/baseQueryTypes';
 import { Error } from 'shared/lib/errors/error';
 import { ZodType } from 'zod';
@@ -13,9 +15,9 @@ import { isProduction } from 'shared/utils/isProduction';
 import { isEmpty } from 'lodash';
 import { createInvalidServerDataError } from 'shared/lib/errors/invalidServerDataError';
 
-type QueryArgsOrArgsCreator<TqueryArg> =
+type QueryArgsOrArgsCreator<TQueryArg> =
   | AxiosBaseQueryArgs
-  | ((args: TqueryArg) => AxiosBaseQueryArgs);
+  | ((args: TQueryArg) => AxiosBaseQueryArgs);
 
 function createQueryArgs<TQueryArg>(
   queryArgsOrArgsCreator: QueryArgsOrArgsCreator<TQueryArg>,
@@ -58,13 +60,13 @@ export function createQueryFn<TResult, TQueryArg, TResponse>(
     : TransformResponse<TResult, TResponse>
 ) {
   return (
-    quertArgs: TQueryArg,
+    queryArgs: TQueryArg,
     api: BaseQueryApi,
     extraOptions: BaseQueryExtraOptions<BaseQueryFn>,
     baseQuery: ReturnType<typeof axiosBaseQuery>
   ): Promise<QueryReturnValue<TResult, Error>> =>
     queryFn<TResult, TResponse>(
-      createQueryArgs<TQueryArg>(queryArgsOrArgsCreator, quertArgs),
+      createQueryArgs<TQueryArg>(queryArgsOrArgsCreator, queryArgs),
       api,
       extraOptions,
       baseQuery,
