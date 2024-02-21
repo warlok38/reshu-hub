@@ -4,11 +4,10 @@ import { Cards } from './Cards';
 import { useOutlet } from 'react-router';
 import { eventsCarouselListMock, eventsMock } from 'shared/mocks/events';
 import { Carousel } from 'shared/components/Carousel';
-import { headerRoutes } from 'shared/models';
 import { useNavigate } from 'react-router';
 import { ArrowRight } from '@mui/icons-material';
 import * as S from './styled';
-import { routeCodesEnum } from 'shared/constants/routeCodes';
+import { EVENTS_PATH } from 'shared/constants/routePaths';
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -36,7 +35,7 @@ const EventsPage = () => {
 
   const onClickDetail = useCallback(
     (id: number) => {
-      navigate(`${routeCodesEnum.enum.events}/${id}`);
+      navigate(`${EVENTS_PATH}/${id}`);
     },
     [navigate]
   );

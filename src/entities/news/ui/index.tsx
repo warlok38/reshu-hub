@@ -5,7 +5,7 @@ import { NewsCardContent } from './NewsCardContent';
 import { NewsCardActions } from './NewsCardActions';
 import { Link } from 'react-router-dom';
 import { News } from 'shared/mocks/news';
-import { routeCodesEnum } from 'shared/constants/routeCodes';
+import { NEWS_PATH } from 'shared/constants/routePaths';
 
 type NewsCardProps = {
   news: News;
@@ -23,7 +23,7 @@ export const NewsCard = ({ news }: NewsCardProps) => {
         flexDirection: 'column',
       }}
     >
-      <Link to={`${routeCodesEnum.enum.news}/${news.id}`}>
+      <Link to={`${NEWS_PATH}/${news.id}`}>
         <CardMedia
           sx={{ height: '300px', width: '100%' }}
           component="img"

@@ -8,7 +8,7 @@ export const headerRoutes = {
       code: routeCodesEnum.enum.news,
       name: 'Новости',
       index: true,
-      nestedRoutes: [{ path: ':id' }, { path: 'new', name: 'Создание' }],
+      nestedRoutes: [{ path: ':id' }],
     },
     {
       path: routePaths.EVENTS_PATH,
