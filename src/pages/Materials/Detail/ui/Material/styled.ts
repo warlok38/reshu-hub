@@ -1,13 +1,11 @@
 import { styled } from '@mui/material';
 
-export const Wrapper = styled('div')`
-  position: relative;
-  display: flex;
-  align-items: center;
-  column-gap: ${({ theme }) => theme.spacing(4)};
+export const Row = styled('div')`
+  padding-left: ${({ theme }) => theme.spacing(2)};
+  padding-right: ${({ theme }) => theme.spacing(2)};
+  border-radius: 5px;
   :hover {
-    cursor: pointer;
-    opacity: 0.8;
+    background-color: ${({ theme }) => theme.palette.background.default};
   }
 `;
 

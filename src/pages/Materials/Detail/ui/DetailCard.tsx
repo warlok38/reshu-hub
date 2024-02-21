@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box, Grid } from '@mui/material';
+import { Typography, Button, Stack } from '@mui/material';
 import { Material } from './Material';
 
 type DetailCardProps = {
@@ -15,7 +15,8 @@ type DetailCardProps = {
 
 export function DetailCard({ id, name, materials }: DetailCardProps) {
   return (
-    <Box
+    <Stack
+      spacing={4}
       sx={(theme) => ({
         width: '100%',
         padding: 4,
@@ -24,9 +25,6 @@ export function DetailCard({ id, name, materials }: DetailCardProps) {
       })}
     >
       <Typography
-        sx={{ mb: '16px' }}
-        gutterBottom
-        color="#FF9764"
         fontWeight="700"
         fontSize="48px"
         letterSpacing="0.5px"
@@ -34,25 +32,22 @@ export function DetailCard({ id, name, materials }: DetailCardProps) {
       >
         {name}
       </Typography>
-      <Grid
-        container
-        spacing={4}
+      <Button
+        variant="contained"
+        sx={{ width: 'fit-content' }}
       >
+        Добавить
+      </Button>
+      <Stack spacing={2}>
         {materials.map(({ id, name, type, size }) => (
-          <Grid
-            key={id}
-            item
-            xs={12}
-          >
-            <Material
-              id={id}
-              name={name}
-              type={type}
-              size={size}
-            />
-          </Grid>
+          <Material
+            id={id}
+            name={name}
+            type={type}
+            size={size}
+          />
         ))}
-      </Grid>
-    </Box>
+      </Stack>
+    </Stack>
   );
 }
