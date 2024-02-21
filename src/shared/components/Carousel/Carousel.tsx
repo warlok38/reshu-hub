@@ -5,7 +5,6 @@ import { Box } from '@mui/material';
 import { CAROUSEL } from './const';
 import * as S from './Carousel.styled';
 import { getClassnameByIndicatorVariant } from './utils';
-import { TextTruncate } from '../TextTruncate';
 import { Captions } from './Captions';
 
 export type IndicatorVariants = 'default' | 'custom';

@@ -4,6 +4,7 @@ import * as S from './styled';
 import { BreadcrumbLink } from './BreadcrumbLink';
 import { useLocation } from 'react-router-dom';
 import { isEmpty } from 'lodash';
+import { headerRoutes } from 'shared/models';
 
 type BreadcrumbsProps = MUIBreadcrumbsProps;
 
@@ -28,12 +29,19 @@ export const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
 
   return (
     <S.Wrapper {...props}>
-      {pathnames.map(
-        ({ currentPathname, pathname }) =>
+      {pathnames.map(({ currentPathname, pathname }) => {
+        const title = headerRoutes.public.filter(
+          ({ code }) => code === pathname
+        )[0].name;
+
+        return (
           currentPathname && (
-            <BreadcrumbLink to={currentPathname}>{pathname}</BreadcrumbLink>
+            <BreadcrumbLink to={currentPathname}>
+              {title || pathname}
+            </BreadcrumbLink>
           )
-      )}
+        );
+      })}
     </S.Wrapper>
   );
 };

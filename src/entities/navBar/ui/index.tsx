@@ -9,7 +9,7 @@ export function NavBar() {
 
   return (
     <S.Wrapper>
-      {Object.values(headerRoutes).map(({ name, path }) => (
+      {Object.values(headerRoutes.public).map(({ name, path }) => (
         <Link
           key={path}
           to={path}

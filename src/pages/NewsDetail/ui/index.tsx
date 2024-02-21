@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import { news } from 'shared/mocks/news';
 import { Banner } from 'shared/components/Banner';
 import { BookmarkBorderOutlined, ShareOutlined } from '@mui/icons-material';
@@ -8,6 +8,24 @@ import * as S from './styled';
 const NewsDetailPage = () => {
   return (
     <Box>
+      <Stack
+        direction="row"
+        alignItems="center"
+        gap={4}
+      >
+        <Button
+          variant="outlined"
+          color="secondary"
+        >
+          В архив
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+        >
+          Удалить новость
+        </Button>
+      </Stack>
       <Typography
         variant="h1"
         fontSize="44px"

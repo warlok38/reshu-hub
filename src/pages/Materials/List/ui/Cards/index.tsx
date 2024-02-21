@@ -2,9 +2,9 @@ import React from 'react';
 import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
 import { Grid } from '@mui/material';
-import { headerRoutes } from 'shared/models';
 import { useNavigate } from 'react-router';
 import { materialsMock } from 'shared/mocks/materials';
+import { routeCodesEnum } from 'shared/constants/routeCodes';
 
 export const Cards = () => {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ export const Cards = () => {
                   hasOwnComments={hasOwnComments}
                 />
               }
-              onClick={() => navigate(`${headerRoutes.materials.path}/${id}`)}
+              onClick={() => navigate(`${routeCodesEnum.enum.materials}/${id}`)}
             />
           </Grid>
         )

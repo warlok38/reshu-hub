@@ -11,16 +11,15 @@ export const NewsList = ({ styleGrid }: NewsListProps) => {
   return (
     <Grid
       container
-      spacing={{ xs: '32px' }}
-      columns={{ xs: 4, sm: 8, md: 12 }}
+      spacing={8}
       style={{ ...styleGrid, justifyContent: 'center' }}
     >
       {Array.from(Array(6)).map((_, index) => (
         <Grid
           item
-          xs={3}
-          sm={4}
           md={4}
+          sm={6}
+          xs={12}
           key={index}
         >
           <NewsCard news={{ id: index } as News} />

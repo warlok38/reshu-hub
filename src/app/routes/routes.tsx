@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, RouteObject } from 'react-router-dom';
-import { headerRoutes } from 'shared/models';
+import * as routePath from 'shared/constants/routePaths';
 
 const News = React.lazy(() => import('pages/News'));
 const Events = React.lazy(() => import('pages/Events/List'));
@@ -19,13 +19,13 @@ export const publicRoutes: Route[] = [
     index: true,
     element: (
       <Navigate
-        to={headerRoutes.news.path}
+        to={routePath.NEWS_PATH}
         replace
       />
     ),
   },
   {
-    path: headerRoutes.news.path,
+    path: routePath.NEWS_PATH,
     element: <News />,
     children: [
       {
@@ -35,7 +35,7 @@ export const publicRoutes: Route[] = [
     ],
   },
   {
-    path: headerRoutes.events.path,
+    path: routePath.EVENTS_PATH,
     element: <Events />,
     children: [
       {
@@ -45,9 +45,9 @@ export const publicRoutes: Route[] = [
     ],
   },
   {
-    path: headerRoutes.materials.path,
+    path: routePath.MATERIALS_PATH,
     element: <Materials />,
-    handle: { crumb: headerRoutes.materials.path },
+    handle: { crumb: routePath.MATERIALS_PATH },
     children: [
       {
         path: ':id',
@@ -67,11 +67,11 @@ export const publicRoutes: Route[] = [
     ],
   },
   {
-    path: headerRoutes.gallery.path,
+    path: routePath.GALLERY_PATH,
     element: <Gallery />,
   },
   {
-    path: headerRoutes.about.path,
+    path: routePath.ABOUT_PATH,
     element: <About />,
   },
   {

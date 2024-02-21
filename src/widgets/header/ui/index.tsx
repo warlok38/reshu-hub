@@ -3,7 +3,8 @@ import { NavBar } from 'entities/navBar';
 import { Logo } from 'shared/components/Logo';
 import * as S from './styled';
 import { LoginButton } from 'features/auth/login';
-import { Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
+import { AddOutlined } from '@mui/icons-material';
 
 export function Header() {
   return (
@@ -17,7 +18,21 @@ export function Header() {
           <Logo />
           <NavBar />
         </Stack>
-        <LoginButton />
+        <Stack
+          direction="row"
+          spacing={4}
+          alignItems="center"
+        >
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
+            sx={{ borderRadius: 50, minWidth: 0, width: 32 }}
+          >
+            <AddOutlined />
+          </Button>
+          <LoginButton />
+        </Stack>
       </S.Content>
     </S.Wrapper>
   );
