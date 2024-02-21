@@ -1,22 +1,23 @@
 import { routeCodesEnum } from 'shared/constants/routeCodes';
+import * as routePaths from 'shared/constants/routePaths';
 
 export const headerRoutes = {
   public: [
     {
-      path: '/news',
+      path: routePaths.NEWS_PATH,
       code: routeCodesEnum.enum.news,
       name: 'Новости',
       index: true,
       nestedRoutes: [{ path: ':id' }, { path: 'new', name: 'Создание' }],
     },
     {
-      path: '/events',
+      path: routePaths.EVENTS_PATH,
       code: routeCodesEnum.enum.events,
       name: 'Мероприятия',
       nestedRoutes: [{ path: ':id' }],
     },
     {
-      path: '/materials',
+      path: routePaths.MATERIALS_PATH,
       code: routeCodesEnum.enum.materials,
       name: 'Материалы',
       nestedRoutes: [
@@ -26,16 +27,20 @@ export const headerRoutes = {
       ],
     },
     {
-      path: '/gallery',
+      path: routePaths.GALLERY_PATH,
       code: routeCodesEnum.enum.gallery,
       name: 'Галерея',
       nestedRoutes: [{ path: ':id' }],
     },
-    { path: '/about', code: routeCodesEnum.enum.about, name: 'О нас' },
+    {
+      path: routePaths.ABOUT_PATH,
+      code: routeCodesEnum.enum.about,
+      name: 'О нас',
+    },
   ],
   admin: [
     {
-      path: '/add',
+      path: routePaths.ADD_PATH,
       code: routeCodesEnum.enum.add,
     },
   ],

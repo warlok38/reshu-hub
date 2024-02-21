@@ -1,3 +1,4 @@
+//PUBLIC
 /* NEWS */
 export const NEWS_PATH = '/news';
 
@@ -13,5 +14,6 @@ export const GALLERY_PATH = '/gallery';
 /* ABOUT */
 export const ABOUT_PATH = '/about';
 
+//ADMIN
 /* ADD */
-export const ADD_PATH = '/add';
+export const ADD_PATH = '/admin/add';

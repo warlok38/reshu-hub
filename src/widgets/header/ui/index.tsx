@@ -4,7 +4,7 @@ import { Logo } from 'shared/components/Logo';
 import * as S from './styled';
 import { LoginButton } from 'features/auth/login';
 import { Button, Stack } from '@mui/material';
-import { AddOutlined } from '@mui/icons-material';
+import { AddButton } from 'features/add';
 
 export function Header() {
   return (
@@ -23,14 +23,7 @@ export function Header() {
           spacing={4}
           alignItems="center"
         >
-          <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            sx={{ borderRadius: 50, minWidth: 0, width: 32 }}
-          >
-            <AddOutlined />
-          </Button>
+          <AddButton />
           <LoginButton />
         </Stack>
       </S.Content>

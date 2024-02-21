@@ -32,7 +32,7 @@ export const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
       {pathnames.map(({ currentPathname, pathname }) => {
         const title = headerRoutes.public.filter(
           ({ code }) => code === pathname
-        )[0].name;
+        )[0]?.name;
 
         return (
           currentPathname && (

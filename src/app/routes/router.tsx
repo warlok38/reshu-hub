@@ -7,11 +7,39 @@ import {
   Route,
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
+import { adminRoutes } from './adminRoutes';
 const Registration = React.lazy(() => import('pages/Registration'));
 const Login = React.lazy(() => import('pages/Login'));
 
 export function getRouter() {
   const unprotectedRoutes = publicRoutes.map(
+    ({ index, path, element, handle, children }) => {
+      return index ? (
+        <Route
+          index={index}
+          key={path}
+          element={element}
+        />
+      ) : (
+        <Route
+          key={path}
+          path={path}
+          handle={handle}
+          element={element}
+        >
+          {children?.map((children) => (
+            <Route
+              key={path}
+              handle={children.handle}
+              path={children.path}
+              element={children.element}
+            />
+          ))}
+        </Route>
+      );
+    }
+  );
+  const protectedRoutes = adminRoutes.map(
     ({ index, path, element, handle, children }) => {
       return index ? (
         <Route
@@ -51,7 +79,8 @@ export function getRouter() {
           </React.Suspense>
         }
       >
-        {unprotectedRoutes}
+        {/* TODO зарефачить после добавление админки */}
+        {[...unprotectedRoutes, ...protectedRoutes]}
       </Route>,
       <Route
         path="/login"

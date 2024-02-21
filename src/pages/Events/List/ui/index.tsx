@@ -4,6 +4,7 @@ import { Cards } from './Cards';
 import { useOutlet } from 'react-router';
 import { eventsCarouselListMock, eventsMock } from 'shared/mocks/events';
 import { Carousel } from 'shared/components/Carousel';
+import { headerRoutes } from 'shared/models';
 import { useNavigate } from 'react-router';
 import { ArrowRight } from '@mui/icons-material';
 import * as S from './styled';
