@@ -1,58 +1,16 @@
-version: '3.9'
-
-
+version: '1'
 
 services:
-  rh_backend_app:
-    container_name: rh_backend_app
-    image: "rh_backend_app"
+  rh_frontend_app:
+    container_name: rh_frontend_app
+    image: 'rh_frontend_app'
     build:
       dockerfile: dockerfile
-    working_dir: /var/www/rh_backend/app
+    working_dir: /var/www/rh_frontend/app
     tty: true
     volumes:
-      - ${PWD:-./}:/var/www/rh_backend/app
-      - /var/www/rh_backend/app/node_modules
+      - ${PWD:-./}:/var/www/rh_frontend/app
+      - /var/www/rh_frontend/node_modules
     ports:
-      - 8000:3000
-    command: npm run start:dev
-    networks:
-      - rh_backend
-  rh_backend_postres:
-    container_name: rh_backend_postres
-    image: postgres:16
-    environment:
-      POSTGRES_USER: rh_backend
-      POSTGRES_PASSWORD: rh_backend
-      PGDATA: /data/postgres
-    volumes:
-      - postgres:/var/www/rh_backend/docker-volumes/pgadmin
-    ports:
-      - 127.0.0.1:8080:5432
-    networks:
-      - rh_backend
-    restart: unless-stopped
-
-  rh_backend_pgadmin:
-    container_name: rh_backend_pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: rh_backend@admin.com
-      PGADMIN_DEFAULT_PASSWORD: rh_backend
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - pgadmin:/var/www/rh_backend/docker-volumes/pgadmin
-    ports:
-      - 127.0.0.1:5050:80
-    networks:
-      - rh_backend
-    restart: unless-stopped
-
-networks:
-  rh_backend:
-    driver: bridge
-
-volumes:
-  postgres:
-  pgadmin:
-
+      - 8000:8000
+    command: npm run start
