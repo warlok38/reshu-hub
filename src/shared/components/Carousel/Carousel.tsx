@@ -53,9 +53,8 @@ export const Carousel = ({
       >
         {list && !isEmpty(list) ? (
           list.map(({ link, title, description }, i) => (
-            <>
+            <React.Fragment key={i}>
               <Box
-                key={i}
                 component="img"
                 src={link}
                 sx={{
@@ -70,7 +69,7 @@ export const Carousel = ({
                 description={description}
                 extra={extra}
               />
-            </>
+            </React.Fragment>
           ))
         ) : (
           <Box

@@ -28,13 +28,13 @@ export const Cards = ({ list, onClickDetail }: CardsProps) => {
           hasOwnComments,
         }) => (
           <Grid
+            key={id}
             item
             md={4}
             sm={6}
             xs={12}
           >
             <Card
-              key={id}
               title={title}
               description={description}
               date={date}
