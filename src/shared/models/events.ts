@@ -1,7 +1,18 @@
 import { z } from 'zod';
 
-//TODO типизировать сущность
-export const EventEntity = z.any();
+export const EventType = z.object({
+  id: z.number(),
+  name: z.string(),
+});
+
+export const EventEntity = z.object({
+  name: z.string(),
+  subtitle: z.string(),
+  dateStart: z.string(),
+  dateEnd: z.string(),
+  //TODO типизировать newsId
+  newsId: z.any(),
+});
 
 export const EventsList = z.array(EventEntity);
 

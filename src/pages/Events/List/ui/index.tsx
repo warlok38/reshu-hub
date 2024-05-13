@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import { ArrowRight } from '@mui/icons-material';
 import * as S from './styled';
 import { EVENTS_PATH } from 'shared/constants/routePaths';
+import { useGetEvents } from 'features/events/hooks/useGetEvents';
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -29,6 +30,9 @@ function TabPanel({ children, value }: TabPanelProps) {
 const EventsPage = () => {
   const outlet = useOutlet();
   const navigate = useNavigate();
+
+  const { list: eventsList } = useGetEvents();
+  console.log('events from backend: ', eventsList);
 
   const [value, setValue] = React.useState<'actual' | 'past'>('actual');
   const list = eventsMock;

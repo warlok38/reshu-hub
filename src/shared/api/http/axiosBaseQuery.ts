@@ -72,7 +72,9 @@ export function axiosBaseQuery(
           headers,
         });
       return {
-        data: getDataFromResponse(result).data,
+        //TODO беку надо переделать ответы на data
+        // data: getDataFromResponse(result).data,
+        data: getDataFromResponse(result),
         meta: { message: result.data.message },
       };
     } catch (err) {
