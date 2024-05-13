@@ -4,6 +4,7 @@ import { NewsBanner } from './NewsBanner';
 import { NewsList } from './NewsList';
 import { NewsTags, TagsData } from 'pages/News/ui/NewsTags';
 import { useOutlet } from 'react-router';
+import { useGetNews } from 'features/news/hooks/useGetNews';
 
 const mockTags: TagsData[] = [
   { id: 1, name: 'Все' },
@@ -22,6 +23,10 @@ const mockTags: TagsData[] = [
 
 const NewsPage = () => {
   const outlet = useOutlet();
+
+  const { list } = useGetNews();
+
+  console.log('news from backend: ', list);
 
   if (outlet) {
     return outlet;
