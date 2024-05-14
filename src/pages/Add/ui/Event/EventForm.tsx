@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -60,6 +61,12 @@ export function EventForm() {
         multiline
         rows={5}
       />
+      <Button
+        variant="contained"
+        sx={{ width: 'fit-content' }}
+      >
+        Создать
+      </Button>
     </Stack>
   );
 }

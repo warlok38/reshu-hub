@@ -1,15 +1,54 @@
 import React from 'react';
-import { Stack, TextField } from '@mui/material';
+import { Button, CircularProgress, Stack, TextField } from '@mui/material';
+import { CreateNewsEntity } from 'shared/models/news';
+import { useForm } from 'react-hook-form';
+import dayjs from 'dayjs';
+import { DATE_FORMAT_API } from 'shared/constants/dateFormat';
 
-export function NewsForm() {
+type NewsFormProps = {
+  isLoading?: boolean;
+  onCreate: (data: CreateNewsEntity) => void;
+};
+
+export function NewsForm({ isLoading, onCreate }: NewsFormProps) {
+  const { handleSubmit, register } = useForm<CreateNewsEntity>();
+  const submitHandler = (values: CreateNewsEntity) => {
+    onCreate?.(values);
+  };
+
   return (
-    <Stack spacing={4}>
-      <TextField label="Заголовок" />
-      <TextField
-        label="Текст"
-        multiline
-        rows={5}
-      />
-    </Stack>
+    <form onSubmit={handleSubmit(submitHandler)}>
+      <Stack spacing={4}>
+        <TextField
+          {...register('title')}
+          label="Заголовок"
+        />
+        <TextField
+          {...register('subTitle')}
+          label="Подзаголовок"
+        />
+        <TextField
+          {...register('newsText')}
+          label="Текст"
+          multiline
+          rows={5}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ width: 'fit-content' }}
+          disabled={isLoading}
+        >
+          Создать
+          {isLoading && (
+            <CircularProgress
+              sx={{ marginLeft: 2 }}
+              size="1em"
+              color="secondary"
+            />
+          )}
+        </Button>
+      </Stack>
+    </form>
   );
 }

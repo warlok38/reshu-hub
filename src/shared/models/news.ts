@@ -15,6 +15,7 @@ export const NewsImagesEntity = z.object({
 
 export const NewsEntity = z.object({
   title: z.string(),
+  subTitle: z.string(),
   newsText: z.string(),
   createDate: z.string(),
   views: z.number(),
@@ -26,3 +27,12 @@ export const NewsList = z.array(NewsEntity);
 
 export type NewsEntity = z.infer<typeof NewsEntity>;
 export type NewsList = z.infer<typeof NewsList>;
+
+export const CreateNewsEntity = z.object({
+  title: z.string(),
+  subTitle: z.string(),
+  newsText: z.string(),
+  images: NewsImagesEntity.or(z.null()),
+});
+
+export type CreateNewsEntity = z.infer<typeof CreateNewsEntity>;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Box,
-  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -11,6 +10,7 @@ import {
 } from '@mui/material';
 import { NewsForm } from './News';
 import { EventForm } from './Event';
+import { useCreateNews } from 'features/news/hooks/useCreateNews';
 
 type SelectMockCodes = 'news' | 'event';
 type SelectItemsMockType = { code: SelectMockCodes; name: string };
@@ -28,6 +28,8 @@ const AddPage = () => {
   const changeSelectHandler = (e: SelectChangeEvent) => {
     setSelectedValue(e.target.value as SelectMockCodes);
   };
+
+  const { onCreate, isLoading: isLoadingCreateNews } = useCreateNews();
 
   return (
     <Stack spacing={8}>
@@ -47,16 +49,13 @@ const AddPage = () => {
           </Select>
         </FormControl>
       </Box>
-      {selectedValue === 'news' && <NewsForm />}
-      {selectedValue === 'event' && <EventForm />}
-      {!!selectedValue && (
-        <Button
-          variant="contained"
-          sx={{ width: 'fit-content' }}
-        >
-          Создать
-        </Button>
+      {selectedValue === 'news' && (
+        <NewsForm
+          onCreate={onCreate}
+          isLoading={isLoadingCreateNews}
+        />
       )}
+      {selectedValue === 'event' && <EventForm />}
     </Stack>
   );
 };
