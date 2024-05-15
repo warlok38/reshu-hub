@@ -23,7 +23,11 @@ export const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
       return { currentPathname, pathname: crumb };
     });
 
-  if (isEmpty(pathnames) || pathnames.length === 1) {
+  if (
+    isEmpty(pathnames) ||
+    pathnames.length === 1 ||
+    pathnames.map(({ currentPathname }) => currentPathname).includes('/admin')
+  ) {
     return null;
   }
 

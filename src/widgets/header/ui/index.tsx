@@ -1,22 +1,26 @@
 import React from 'react';
-import { NavBar } from 'entities/navBar';
+import { NavMenu } from 'entities/navMenu';
 import { Logo } from 'shared/components/Logo';
 import * as S from './styled';
 import { LoginButton } from 'features/auth/login';
-import { Button, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { AddButton } from 'features/add';
+import { useScreen } from 'shared/hooks/useScreen';
 
 export function Header() {
+  const { isSmallScreen } = useScreen();
+
   return (
     <S.Wrapper>
       <S.Content>
         <Stack
           direction="row"
-          spacing={8}
+          spacing={isSmallScreen ? 2 : 8}
           alignItems="center"
         >
-          <Logo />
-          <NavBar />
+          {isSmallScreen && <NavMenu />}
+          <Logo variant={isSmallScreen ? 'small' : 'primary'} />
+          {!isSmallScreen && <NavMenu />}
         </Stack>
         <Stack
           direction="row"
