@@ -10,6 +10,8 @@ export const LoginButton = () => {
     <S.LoginButton
       onClick={() => navigate('/login')}
       startIcon={<LoginIcon fontSize="inherit" />}
+      variant="contained"
+      color="secondary"
     >
       Войти
     </S.LoginButton>

@@ -26,13 +26,12 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.palette.secondary.main};
 
   :hover {
-    color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.palette.secondary.dark};
   }
 `;
 
 export const StyledButton = styled(Button)`
   width: fit-content;
-  background: ${({ theme }) => theme.palette.secondary.main};
   line-height: 36px;
   text-transform: uppercase;
   border-radius: 50px;

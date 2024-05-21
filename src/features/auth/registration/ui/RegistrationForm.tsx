@@ -124,12 +124,14 @@ export const RegistrationForm = () => {
             <S.StyledButton
               type="submit"
               variant="contained"
+              color="secondary"
             >
               Зарегистрироваться
             </S.StyledButton>
           </Box>
           <Divider sx={{ opacity: 0.5 }} />
           <S.StyledLink to="/login">Войти</S.StyledLink>
+          <S.StyledLink to="/">Отмена</S.StyledLink>
         </Stack>
       </form>
     </S.Wrapper>

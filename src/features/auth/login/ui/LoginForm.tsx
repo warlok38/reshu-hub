@@ -87,12 +87,14 @@ export const LoginForm = () => {
             <S.StyledButton
               type="submit"
               variant="contained"
+              color="secondary"
             >
               Войти
             </S.StyledButton>
           </Box>
           <Divider />
           <S.StyledLink to="/registration">Зарегистрироваться</S.StyledLink>
+          <S.StyledLink to="/">Отмена</S.StyledLink>
         </Stack>
       </form>
     </S.Wrapper>
