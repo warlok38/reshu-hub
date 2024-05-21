@@ -1,7 +1,7 @@
 import React from 'react';
 import { DialogProps } from '@mui/material';
 import { TextContent } from './TextContent';
-import Scrollbars from 'react-custom-scrollbars';
+import Scrollbars from 'react-custom-scrollbars-2';
 import { Close } from '@mui/icons-material';
 import { Carousel, ImageListType } from 'shared/components/Carousel';
 import * as S from './styled';
