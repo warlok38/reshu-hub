@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Outlet,
   Route,
+  ScrollRestoration,
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
 import { adminRoutes } from './adminRoutes';
@@ -74,6 +75,7 @@ export function getRouter() {
         element={
           <React.Suspense fallback={<Layout />}>
             <Layout>
+              <ScrollRestoration />
               <Outlet />
             </Layout>
           </React.Suspense>
