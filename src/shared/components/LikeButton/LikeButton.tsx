@@ -8,8 +8,15 @@ type LikeButtonProps = {
 } & CheckboxProps;
 
 export const LikeButton = ({ count = 0, ...props }: LikeButtonProps) => {
+  const clickStopPropagationHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={clickStopPropagationHandler}>
       <S.Checkbox
         {...props}
         icon={<FavoriteBorder />}

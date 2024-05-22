@@ -17,8 +17,18 @@ export const CommentButton = ({
   iconButtonProps,
   ...props
 }: CommentButtonProps) => {
+  const clickStopPropagationHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
-    <S.Wrapper {...props}>
+    <S.Wrapper
+      {...props}
+      onClick={clickStopPropagationHandler}
+    >
       <S.IconButton
         {...iconButtonProps}
         onClick={onClick}

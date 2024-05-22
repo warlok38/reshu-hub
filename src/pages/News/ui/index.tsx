@@ -5,6 +5,8 @@ import { NewsList } from './NewsList';
 import { NewsTags, TagsData } from 'pages/News/ui/NewsTags';
 import { useOutlet } from 'react-router';
 import { useGetNews } from 'features/news/hooks/useGetNews';
+import { isEmpty } from 'lodash';
+import { Button } from '@mui/material';
 
 const mockTags: TagsData[] = [
   { id: 1, name: 'Все' },
@@ -26,10 +28,12 @@ const NewsPage = () => {
 
   const { list } = useGetNews();
 
-  console.log('news from backend: ', list);
-
   if (outlet) {
     return outlet;
+  }
+
+  if (!list || isEmpty(list)) {
+    return <div>Новостей нет</div>;
   }
 
   return (
@@ -44,7 +48,16 @@ const NewsPage = () => {
         data={mockTags}
         stackProps={{ style: { marginTop: '64px' } }}
       />
-      <NewsList styleGrid={{ marginTop: '20px' }} />
+      <NewsList
+        newsList={list}
+        styleGrid={{ marginTop: '20px' }}
+      />
+      <Button
+        variant="contained"
+        style={{ margin: '32px 0', borderRadius: '20px', width: 'fit-content' }}
+      >
+        Показать ещё
+      </Button>
     </S.Wrapper>
   );
 };

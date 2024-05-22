@@ -4,8 +4,19 @@ import { news } from 'shared/mocks/news';
 import { Banner } from 'shared/components/Banner';
 import { BookmarkBorderOutlined, ShareOutlined } from '@mui/icons-material';
 import * as S from './styled';
+import { useGetNewsDetail } from 'features/news/hooks/useGetNewsDetail';
+import { useParams } from 'react-router';
+import { dateFormat } from 'shared/utils/format';
 
 const NewsDetailPage = () => {
+  const { id } = useParams();
+
+  const { detail } = useGetNewsDetail(Number(id));
+
+  if (!detail) {
+    return <div>Новость не найдена</div>;
+  }
+
   return (
     <Box>
       <Stack
@@ -32,14 +43,14 @@ const NewsDetailPage = () => {
         fontWeight={500}
         mb={8}
       >
-        {news.title}
+        {detail.title}
       </Typography>
       <Banner imageSrc={news.image.url} />
       <Typography
         fontSize="24px"
         mt={8}
       >
-        {news.content}
+        {detail.newsText}
       </Typography>
       <Stack
         direction="row"
@@ -61,7 +72,7 @@ const NewsDetailPage = () => {
             fontSize="20px"
             fontWeight={500}
           >
-            {news.updatedAt}
+            {dateFormat(detail.createDate)}
           </Typography>
           <S.IconButton>
             <ShareOutlined />

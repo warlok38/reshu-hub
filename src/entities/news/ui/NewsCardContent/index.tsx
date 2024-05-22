@@ -1,8 +1,15 @@
 import React from 'react';
 import { CardContent, Divider, Stack, Tooltip } from '@mui/material';
 import * as S from './styled';
+import { NewsCategoryEntity } from 'shared/models/news';
 
-export const NewsCardContent = () => {
+type NewsCardContent = {
+  category: NewsCategoryEntity | null;
+  title: string;
+  text: string;
+};
+
+export const NewsCardContent = ({ title, text, category }: NewsCardContent) => {
   return (
     <CardContent style={{ flex: '1 1 auto' }}>
       <Stack
@@ -19,24 +26,12 @@ export const NewsCardContent = () => {
           }
           spacing={{ xs: 1, sm: 2 }}
         >
-          <S.Categories>Конкурс</S.Categories>
+          {category && <S.Categories>{category.category}</S.Categories>}
         </Stack>
-        <Tooltip title=" Университет Решетнева запустит на орбиту космический спутник летом 2023 года ещё слово слово слово слово слово слово слово слово слово словословословослово">
-          <S.Title>
-            Университет Решетнева запустит на орбиту космический спутник летом
-            2023 года ещё слово слово слово слово слово слово слово слово слово
-            словословословослово
-          </S.Title>
+        <Tooltip title={title}>
+          <S.Title>{title}</S.Title>
         </Tooltip>
-        <S.Description>
-          На ReshUCube-2 будут отработаны задачи связи. Запуск на орбиту
-          космического аппарата ReshuCube-2, разработанного учеными Университета
-          Решетнева (СибГУ), состоится в июне 2023 года на космодроме Восточный.
-          Сейчас текст потихоньку пропадёт слово слово слово слово слово слово
-          слово слово слово слово слово слово слово слово слово слово слово
-          слово слово слово слово слово слово слово слово слово слово слово
-          слово слово слово слово слово слово
-        </S.Description>
+        <S.Description>{text}</S.Description>
       </Stack>
     </CardContent>
   );

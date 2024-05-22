@@ -9,9 +9,9 @@ type CardActionsProps = {
   commentCount?: number;
   hasOwnLike?: boolean;
   hasOwnComments?: boolean;
-  renderLike?: boolean;
-  renderComments?: boolean;
-  renderShare?: boolean;
+  isLikeVisible?: boolean;
+  isCommentsVisible?: boolean;
+  isShareVisible?: boolean;
 };
 
 export const CardActions = ({
@@ -19,26 +19,26 @@ export const CardActions = ({
   commentCount,
   hasOwnLike,
   hasOwnComments,
-  renderLike = true,
-  renderComments = true,
-  renderShare = true,
+  isLikeVisible = true,
+  isCommentsVisible = true,
+  isShareVisible = true,
 }: CardActionsProps) => {
   return (
     <S.Wrapper>
-      {renderLike && (
+      {isLikeVisible && (
         <LikeButton
           count={likeCount}
           checked={hasOwnLike}
         />
       )}
-      {renderComments && (
+      {isCommentsVisible && (
         <CommentButton
           count={commentCount}
           hasOwnComments={hasOwnComments}
           onClick={() => console.log('click CommentButton')}
         />
       )}
-      {renderShare && (
+      {isShareVisible && (
         <ShareButton onClick={() => console.log('click ShareButton')} />
       )}
     </S.Wrapper>

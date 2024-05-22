@@ -6,9 +6,18 @@ import { IconButtonProps } from '@mui/material';
 type ShareButtonProps = IconButtonProps;
 
 export const ShareButton = ({ ...props }: ShareButtonProps) => {
+  const clickStopPropagationHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
-    <S.Wrapper {...props}>
-      <Share />
-    </S.Wrapper>
+    <div onClick={clickStopPropagationHandler}>
+      <S.IconButton {...props}>
+        <Share />
+      </S.IconButton>
+    </div>
   );
 };

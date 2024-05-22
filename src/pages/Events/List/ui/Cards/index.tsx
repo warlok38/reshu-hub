@@ -3,13 +3,13 @@ import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
 import { Grid } from '@mui/material';
 import { eventsMock } from 'shared/mocks/events';
+import { EVENTS_PATH } from 'shared/constants/routePaths';
 
 type CardsProps = {
   list: typeof eventsMock.actual | typeof eventsMock.past;
-  onClickDetail: (id: number) => void;
 };
 
-export const Cards = ({ list, onClickDetail }: CardsProps) => {
+export const Cards = ({ list }: CardsProps) => {
   return (
     <Grid
       container
@@ -39,6 +39,7 @@ export const Cards = ({ list, onClickDetail }: CardsProps) => {
               description={description}
               date={date}
               image={image}
+              linkProps={{ to: `${EVENTS_PATH}/${id}` }}
               actions={
                 <CardActions
                   likeCount={likeCount}
@@ -47,7 +48,6 @@ export const Cards = ({ list, onClickDetail }: CardsProps) => {
                   hasOwnComments={hasOwnComments}
                 />
               }
-              onClick={() => onClickDetail(id)}
             />
           </Grid>
         )

@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
-import { CardProps as MUICardProps, Typography } from '@mui/material';
+import { Link, CardProps as MUICardProps, Typography } from '@mui/material';
 import * as S from './Card.styled';
 import { TextTruncate } from '../TextTruncate';
+import { Link as RRLink, LinkProps as RRLinkProps } from 'react-router-dom';
 
 export type CardProps = {
   title: string;
@@ -9,7 +10,7 @@ export type CardProps = {
   date?: string;
   image?: string;
   actions?: ReactNode;
-  onClick?: () => void;
+  linkProps?: RRLinkProps;
 } & MUICardProps;
 
 export const Card = ({
@@ -18,15 +19,12 @@ export const Card = ({
   date,
   image,
   actions,
-  onClick,
+  linkProps,
   ...props
 }: CardProps) => {
-  return (
+  const renderCard = () => (
     <S.Wrapper {...props}>
-      <S.Media
-        image={image}
-        onClick={onClick}
-      />
+      <S.Media image={image} />
       <S.Container>
         <S.Content>
           <TextTruncate
@@ -49,5 +47,17 @@ export const Card = ({
         {actions && <S.Actions>{actions}</S.Actions>}
       </S.Container>
     </S.Wrapper>
+  );
+
+  return linkProps?.to ? (
+    <Link
+      component={RRLink}
+      underline="none"
+      {...linkProps}
+    >
+      {renderCard()}
+    </Link>
+  ) : (
+    renderCard()
   );
 };

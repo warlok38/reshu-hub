@@ -1,13 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Box, Button, Tab, Tabs, Typography } from '@mui/material';
 import { Cards } from './Cards';
 import { useOutlet } from 'react-router';
 import { eventsCarouselListMock, eventsMock } from 'shared/mocks/events';
 import { Carousel } from 'shared/components/Carousel';
-import { useNavigate } from 'react-router';
 import { ArrowRight } from '@mui/icons-material';
 import * as S from './styled';
-import { EVENTS_PATH } from 'shared/constants/routePaths';
 import { useGetEvents } from 'features/events/hooks/useGetEvents';
 
 type TabPanelProps = {
@@ -29,20 +27,12 @@ function TabPanel({ children, value }: TabPanelProps) {
 
 const EventsPage = () => {
   const outlet = useOutlet();
-  const navigate = useNavigate();
 
   const { list: eventsList } = useGetEvents();
   console.log('events from backend: ', eventsList);
 
   const [value, setValue] = React.useState<'actual' | 'past'>('actual');
   const list = eventsMock;
-
-  const onClickDetail = useCallback(
-    (id: number) => {
-      navigate(`${EVENTS_PATH}/${id}`);
-    },
-    [navigate]
-  );
 
   const changeTabsHandler = (
     event: React.SyntheticEvent,
@@ -66,10 +56,7 @@ const EventsPage = () => {
           autoPlay
           interval={5000}
           extra={
-            <Button
-              variant="contained"
-              onClick={() => onClickDetail(1)}
-            >
+            <Button variant="contained">
               Подробнее <ArrowRight />
             </Button>
           }
@@ -99,10 +86,7 @@ const EventsPage = () => {
           </Tabs>
         </Box>
         <TabPanel value={value}>
-          <Cards
-            list={list[value]}
-            onClickDetail={onClickDetail}
-          />
+          <Cards list={list[value]} />
         </TabPanel>
       </Box>
     </S.Wrapper>

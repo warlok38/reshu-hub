@@ -15,7 +15,6 @@ export const Banner = ({ imageSrc, children }: BannerProps) => {
           item
           md={4}
           sx={{ position: 'relative', zIndex: 1 }}
-          maxWidth={500}
         >
           {children}
         </Grid>

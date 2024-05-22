@@ -11,15 +11,14 @@ export const Wrapper = styled(Card)`
   flex-direction: column;
   border-radius: 20px;
   height: 100%;
+  cursor: pointer;
+
+  :hover {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.16);
+  }
 `;
 export const Media = styled(CardMedia)`
   min-height: 320px;
-  ${({ onClick }) =>
-    Boolean(onClick) &&
-    `
-    :hover {
-    cursor: pointer;
-    }`}
 `;
 export const Container = styled('div')`
   display: flex;

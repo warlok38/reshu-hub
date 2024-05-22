@@ -6,6 +6,7 @@ export const ImageContainer = styled('div')`
   justify-content: center;
   position: relative;
   height: 500px;
+  width: 100%;
 `;
 
 export const Image = styled('img')`

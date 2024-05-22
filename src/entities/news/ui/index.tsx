@@ -6,14 +6,14 @@ import { NewsCardActions } from './NewsCardActions';
 import { Link } from 'react-router-dom';
 import { News } from 'shared/mocks/news';
 import { NEWS_PATH } from 'shared/constants/routePaths';
+import { NewsEntity } from 'shared/models/news';
+import { dateFormat } from 'shared/utils/format';
 
 type NewsCardProps = {
-  news: News;
+  news: NewsEntity;
 };
 
 export const NewsCard = ({ news }: NewsCardProps) => {
-  const { id } = news;
-
   return (
     <Card
       sx={{
@@ -31,14 +31,18 @@ export const NewsCard = ({ news }: NewsCardProps) => {
           title="Image Title"
         />
       </Link>
-      <NewsCardContent />
+      <NewsCardContent
+        title={news.title}
+        text={news.newsText}
+        category={news.category}
+      />
       <Stack
         direction="row"
         justifyContent="space-between"
         alignItems="center"
       >
         <NewsCardActions />
-        <S.Date>08.04.2023</S.Date>
+        <S.Date>{dateFormat(news.createDate)}</S.Date>
       </Stack>
     </Card>
   );
