@@ -71,6 +71,7 @@ export function getRouter() {
   return createBrowserRouter(
     createRoutesFromElements([
       <Route
+        key="/"
         path="/"
         element={
           <React.Suspense fallback={<Layout />}>
@@ -85,6 +86,7 @@ export function getRouter() {
         {[...unprotectedRoutes, ...protectedRoutes]}
       </Route>,
       <Route
+        key="/login"
         path="/login"
         element={
           <React.Suspense>
@@ -93,6 +95,7 @@ export function getRouter() {
         }
       />,
       <Route
+        key="/registration"
         path="/registration"
         element={
           <React.Suspense>

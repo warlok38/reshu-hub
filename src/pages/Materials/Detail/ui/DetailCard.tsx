@@ -41,6 +41,7 @@ export function DetailCard({ id, name, materials }: DetailCardProps) {
       <Stack spacing={2}>
         {materials.map(({ id, name, type, size }) => (
           <Material
+            key={id}
             id={id}
             name={name}
             type={type}

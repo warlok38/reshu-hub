@@ -35,6 +35,7 @@ export const Cards = () => {
             hasOwnComments,
           }) => (
             <Grid
+              key={id}
               item
               md={4}
               sm={6}

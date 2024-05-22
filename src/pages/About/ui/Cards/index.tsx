@@ -24,13 +24,13 @@ export const Cards = () => {
       >
         {aboutMock.map(({ id, title, description, image }) => (
           <Grid
+            key={id}
             item
             md={4}
             sm={6}
             xs={12}
           >
             <Card
-              key={id}
               title={title}
               description={description}
               image={image}

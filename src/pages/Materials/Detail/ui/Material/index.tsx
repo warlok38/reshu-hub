@@ -12,7 +12,7 @@ type MaterialProps = {
   size: number;
 };
 
-export const Material = ({ id, name, type, size }: MaterialProps) => {
+export const Material = ({ name, type, size }: MaterialProps) => {
   const iconByType = {
     video: <YouTubeIcon color="error" />,
     pdf: <PictureAsPdfIcon color="secondary" />,

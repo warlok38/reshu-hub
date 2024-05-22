@@ -28,11 +28,11 @@ const DetailPage = () => {
       >
         {materialsDetailMock.map(({ id, name, materials }) => (
           <Grid
+            key={id}
             item
             xs={12}
           >
             <DetailCard
-              key={id}
               id={id}
               name={name}
               materials={materials}

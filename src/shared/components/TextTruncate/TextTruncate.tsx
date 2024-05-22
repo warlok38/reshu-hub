@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Typography as Component,
   TypographyProps,

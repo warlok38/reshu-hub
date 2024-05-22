@@ -44,7 +44,12 @@ const AddPage = () => {
             onChange={changeSelectHandler}
           >
             {selectItemsMock.map(({ code, name }) => (
-              <MenuItem value={code}>{name}</MenuItem>
+              <MenuItem
+                key={code}
+                value={code}
+              >
+                {name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { RouterProvider as RRouterProvider } from 'react-router-dom';
 import { getRouter } from 'app/routes/router';
 

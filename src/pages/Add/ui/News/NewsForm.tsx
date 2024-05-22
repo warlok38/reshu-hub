@@ -2,8 +2,6 @@ import React from 'react';
 import { Button, CircularProgress, Stack, TextField } from '@mui/material';
 import { CreateNewsEntity } from 'shared/models/news';
 import { useForm } from 'react-hook-form';
-import dayjs from 'dayjs';
-import { DATE_FORMAT_API } from 'shared/constants/dateFormat';
 
 type NewsFormProps = {
   isLoading?: boolean;

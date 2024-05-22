@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { NewsCard } from 'entities/news';
 import { NewsEntity } from 'shared/models/news';
 import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
