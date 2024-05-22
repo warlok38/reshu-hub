@@ -9,7 +9,9 @@ type NewsFormProps = {
 };
 
 export function NewsForm({ isLoading, onCreate }: NewsFormProps) {
-  const { handleSubmit, register } = useForm<CreateNewsEntity>();
+  const { handleSubmit, register, formState } = useForm<CreateNewsEntity>();
+  const { errors } = formState;
+
   const submitHandler = (values: CreateNewsEntity) => {
     onCreate?.(values);
   };
@@ -18,7 +20,9 @@ export function NewsForm({ isLoading, onCreate }: NewsFormProps) {
     <form onSubmit={handleSubmit(submitHandler)}>
       <Stack spacing={4}>
         <TextField
-          {...register('title')}
+          {...register('title', { required: 'Обязательное поле' })}
+          error={!!errors.title}
+          helperText={errors.title?.message}
           label="Заголовок"
         />
         <TextField
@@ -26,7 +30,9 @@ export function NewsForm({ isLoading, onCreate }: NewsFormProps) {
           label="Подзаголовок"
         />
         <TextField
-          {...register('newsText')}
+          {...register('newsText', { required: 'Обязательное поле' })}
+          error={!!errors.newsText}
+          helperText={errors.newsText?.message}
           label="Текст"
           multiline
           rows={5}
