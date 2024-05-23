@@ -1,9 +1,12 @@
 import { useGetNewsQuery } from 'shared/api/news/newsApi';
 
 export function useGetNews() {
-  const { currentData } = useGetNewsQuery();
+  const { currentData, isFetching } = useGetNewsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
   return {
     list: currentData,
+    isLoading: isFetching,
   };
 }

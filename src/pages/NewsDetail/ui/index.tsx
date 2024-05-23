@@ -7,11 +7,13 @@ import * as S from './styled';
 import { useGetNewsDetail } from 'features/news/hooks/useGetNewsDetail';
 import { useParams } from 'react-router';
 import { dateFormat } from 'shared/utils/format';
+import { useDeleteNews } from 'features/news/hooks/useDeleteNews';
 
 const NewsDetailPage = () => {
   const { id } = useParams();
 
   const { detail } = useGetNewsDetail(Number(id));
+  const { onDelete } = useDeleteNews();
 
   if (!detail) {
     return <div>Новость не найдена</div>;
@@ -33,6 +35,7 @@ const NewsDetailPage = () => {
         <Button
           variant="outlined"
           color="secondary"
+          onClick={() => onDelete({ id: Number(id) })}
         >
           Удалить новость
         </Button>

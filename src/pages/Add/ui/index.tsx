@@ -29,7 +29,7 @@ const AddPage = () => {
     setSelectedValue(e.target.value as SelectMockCodes);
   };
 
-  const { onCreate, isLoading: isLoadingCreateNews } = useCreateNews();
+  const { onSubmit, form, isLoading: isLoadingCreateNews } = useCreateNews();
 
   return (
     <Stack spacing={8}>
@@ -56,8 +56,9 @@ const AddPage = () => {
       </Box>
       {selectedValue === 'news' && (
         <NewsForm
-          onCreate={onCreate}
+          form={form}
           isLoading={isLoadingCreateNews}
+          onSubmit={onSubmit}
         />
       )}
       {selectedValue === 'event' && <EventForm />}

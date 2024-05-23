@@ -30,9 +30,20 @@ export const newsApi = mainApi.injectEndpoints({
         data,
       })),
     }),
+    deleteNews: build.mutation<void, { id: number }>({
+      queryFn: createQueryFn(({ id }) => ({
+        url: `${NEWS_API}/${id}`,
+        method: 'DELETE',
+        data: id,
+      })),
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetNewsQuery, useGetNewsDetailQuery, useCreateNewsMutation } =
-  newsApi;
+export const {
+  useGetNewsQuery,
+  useGetNewsDetailQuery,
+  useCreateNewsMutation,
+  useDeleteNewsMutation,
+} = newsApi;

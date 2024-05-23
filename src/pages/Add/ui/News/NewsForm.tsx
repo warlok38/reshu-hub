@@ -1,19 +1,20 @@
 import React from 'react';
 import { Button, CircularProgress, Stack, TextField } from '@mui/material';
 import { CreateNewsEntity } from 'shared/models/news';
-import { useForm } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 type NewsFormProps = {
+  form: UseFormReturn<CreateNewsEntity>;
   isLoading?: boolean;
-  onCreate: (data: CreateNewsEntity) => void;
+  onSubmit: (values: CreateNewsEntity) => void;
 };
 
-export function NewsForm({ isLoading, onCreate }: NewsFormProps) {
-  const { handleSubmit, register, formState } = useForm<CreateNewsEntity>();
+export function NewsForm({ form, isLoading, onSubmit }: NewsFormProps) {
+  const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
   const submitHandler = (values: CreateNewsEntity) => {
-    onCreate?.(values);
+    onSubmit?.(values);
   };
 
   return (
