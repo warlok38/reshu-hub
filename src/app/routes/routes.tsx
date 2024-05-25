@@ -5,6 +5,7 @@ import * as routePath from 'shared/constants/routePaths';
 const News = React.lazy(() => import('pages/News'));
 const Events = React.lazy(() => import('pages/Events/List'));
 const EventsDetail = React.lazy(() => import('pages/Events/Detail'));
+const Satellite = React.lazy(() => import('pages/Satellite'));
 const Materials = React.lazy(() => import('pages/Materials/List'));
 const MaterialsDetail = React.lazy(() => import('pages/Materials/Detail'));
 const Gallery = React.lazy(() => import('pages/Gallery'));
@@ -43,6 +44,10 @@ export const publicRoutes: Route[] = [
         element: <EventsDetail />,
       },
     ],
+  },
+  {
+    path: routePath.SATELLITE_PATH,
+    element: <Satellite />,
   },
   {
     path: routePath.MATERIALS_PATH,

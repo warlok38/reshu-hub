@@ -17,6 +17,11 @@ export const headerRoutes = {
       nestedRoutes: [{ path: ':id' }],
     },
     {
+      path: routePaths.SATELLITE_PATH,
+      code: routeCodesEnum.enum.satellite,
+      name: 'Спутники',
+    },
+    {
       path: routePaths.MATERIALS_PATH,
       code: routeCodesEnum.enum.materials,
       name: 'Материалы',
