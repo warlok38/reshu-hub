@@ -12,6 +12,7 @@ type CardActionsProps = {
   isLikeVisible?: boolean;
   isCommentsVisible?: boolean;
   isShareVisible?: boolean;
+  onCommentsClick?: () => void;
 };
 
 export const CardActions = ({
@@ -22,6 +23,7 @@ export const CardActions = ({
   isLikeVisible = true,
   isCommentsVisible = true,
   isShareVisible = true,
+  onCommentsClick,
 }: CardActionsProps) => {
   return (
     <S.Wrapper>
@@ -35,7 +37,7 @@ export const CardActions = ({
         <CommentButton
           count={commentCount}
           hasOwnComments={hasOwnComments}
-          onClick={() => console.log('click CommentButton')}
+          onClick={onCommentsClick}
         />
       )}
       {isShareVisible && (

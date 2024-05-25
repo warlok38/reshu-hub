@@ -7,7 +7,7 @@ type CommentButtonProps = {
   count?: number;
   hasOwnComments?: boolean;
   iconButtonProps?: IconButtonProps;
-  onClick: () => void;
+  onClick?: () => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const CommentButton = ({

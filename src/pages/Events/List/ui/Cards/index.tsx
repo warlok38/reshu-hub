@@ -4,12 +4,15 @@ import { CardActions } from 'entities/cardActions';
 import { Grid } from '@mui/material';
 import { eventsMock } from 'shared/mocks/events';
 import { EVENTS_PATH } from 'shared/constants/routePaths';
+import { useNavigate } from 'react-router';
 
 type CardsProps = {
   list: typeof eventsMock.actual | typeof eventsMock.past;
 };
 
 export const Cards = ({ list }: CardsProps) => {
+  const navigate = useNavigate();
+
   return (
     <Grid
       container
@@ -46,6 +49,11 @@ export const Cards = ({ list }: CardsProps) => {
                   hasOwnLike={hasOwnLike}
                   commentCount={commentCount}
                   hasOwnComments={hasOwnComments}
+                  onCommentsClick={() =>
+                    navigate(`${EVENTS_PATH}/${id}`, {
+                      state: { targetId: 'event__comment-input' },
+                    })
+                  }
                 />
               }
             />
