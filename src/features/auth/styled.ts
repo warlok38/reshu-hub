@@ -1,4 +1,5 @@
-import { Box, Button, Paper, styled, Typography } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Box, Paper, styled, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled(Paper)`
@@ -30,7 +31,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled(LoadingButton)`
   width: fit-content;
   line-height: 36px;
   text-transform: uppercase;

@@ -1,31 +1,13 @@
 import React from 'react';
-import {
-  Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  Stack,
-  TextField,
-} from '@mui/material';
+import { Box, Divider, Stack, TextField } from '@mui/material';
 import { PasswordInput } from 'shared/components/Input';
 import * as S from 'features/auth/styled';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-
-type RegistrationFormValues = {
-  login: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  mailing: boolean;
-  rememberMe: boolean;
-};
-
+import { useRegistration } from 'features/auth/hooks/useRegistration';
 export const RegistrationForm = () => {
-  const { handleSubmit, control, register } = useForm<RegistrationFormValues>();
+  const { form, onSubmit, isLoading } = useRegistration();
 
-  const onSubmit: SubmitHandler<RegistrationFormValues> = (data) => {
-    console.log('form data', data);
-  };
+  const { register, handleSubmit, formState } = form;
+  const { errors } = formState;
 
   return (
     <S.Wrapper elevation={4}>
@@ -35,60 +17,49 @@ export const RegistrationForm = () => {
           spacing={6}
         >
           <S.Title>Регистрация</S.Title>
-          <Controller
-            name="login"
-            control={control}
-            rules={{
-              required: 'Обязательное поле',
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <TextField
-                error={!!error}
-                type="text"
-                label="Логин"
-                variant="outlined"
-                helperText={error ? error.message : null}
-                {...field}
-              />
-            )}
+          <TextField
+            {...register('middleName', { required: 'Обязательное поле' })}
+            error={!!errors.middleName}
+            helperText={errors.middleName?.message}
+            type="text"
+            label="Фамилия"
+            variant="outlined"
           />
-          <Controller
-            name="email"
-            control={control}
-            rules={{
-              required: 'Обязательное поле',
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <TextField
-                error={!!error}
-                type="email"
-                label="Почта"
-                variant="outlined"
-                helperText={error ? error.message : null}
-                {...field}
-              />
-            )}
+          <TextField
+            {...register('firsName', { required: 'Обязательное поле' })}
+            error={!!errors.firsName}
+            helperText={errors.firsName?.message}
+            type="text"
+            label="Имя"
+            variant="outlined"
           />
-          <Controller
-            name="password"
-            control={control}
-            rules={{
-              required: 'Обязательное поле',
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <PasswordInput
-                error={!!error}
-                label="Пароль"
-                autoComplete="off"
-                helperText={error ? error.message : null}
-                {...field}
-              />
-            )}
+          <TextField
+            {...register('lastName', { required: 'Обязательное поле' })}
+            error={!!errors.lastName}
+            helperText={errors.lastName?.message}
+            type="text"
+            label="Отчество"
+            variant="outlined"
           />
-          <Controller
-            name="passwordConfirm"
-            control={control}
-            rules={{
+          <TextField
+            {...register('email', { required: 'Обязательное поле' })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            type="email"
+            label="Почта (логин)"
+            variant="outlined"
+            placeholder="Введите email"
+          />
+          <PasswordInput
+            {...register('password', { required: 'Обязательное поле' })}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            label="Пароль"
+            autoComplete="off"
+            placeholder="Введите пароль"
+          />
+          <PasswordInput
+            {...register('passwordConfirm', {
               required: 'Обязательное поле',
               validate: (value, { password }) => {
                 if (value !== password) {
@@ -97,18 +68,15 @@ export const RegistrationForm = () => {
 
                 return true;
               },
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <PasswordInput
-                error={!!error}
-                label="Подтвердите пароль"
-                autoComplete="off"
-                helperText={error ? error.message : null}
-                {...field}
-              />
-            )}
+            })}
+            error={!!errors.passwordConfirm}
+            helperText={errors.passwordConfirm?.message}
+            label="Подтвердите пароль"
+            autoComplete="off"
+            placeholder="Подтвердите пароль"
           />
-          <FormControlLabel
+
+          {/* <FormControlLabel
             control={<Checkbox name="mailing" />}
             label="Получать на почту новые уроки и полезные материалы от ReshUHub"
             slotProps={{ typography: { fontSize: '14px' } }}
@@ -119,12 +87,13 @@ export const RegistrationForm = () => {
             label="Запомнить меня"
             slotProps={{ typography: { fontSize: '14px' } }}
             {...register('rememberMe')}
-          />
+          /> */}
           <Box textAlign="center">
             <S.StyledButton
               type="submit"
               variant="contained"
               color="secondary"
+              loading={isLoading}
             >
               Зарегистрироваться
             </S.StyledButton>
