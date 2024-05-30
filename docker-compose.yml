@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  rh_frontend:
+    container_name: rh_frontend
+    image: rh_frontend
+    build: 
+      dockerfile: dockerfile
+    ports:
+      - 8000:80
