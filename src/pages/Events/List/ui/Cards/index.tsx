@@ -1,10 +1,13 @@
 import React from 'react';
 import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
-import { Grid } from '@mui/material';
+import { Grid, Popover } from '@mui/material';
 import { eventsMock } from 'shared/mocks/events';
 import { EVENTS_PATH } from 'shared/constants/routePaths';
 import { useNavigate } from 'react-router';
+import { useShare } from 'widgets/share/hooks/useShare';
+import { ROOT_URL } from 'shared/api/http/consts';
+import { Share } from 'widgets/share';
 
 type CardsProps = {
   list: typeof eventsMock.actual | typeof eventsMock.past;
@@ -12,6 +15,11 @@ type CardsProps = {
 
 export const Cards = ({ list }: CardsProps) => {
   const navigate = useNavigate();
+  const {
+    state: shareState,
+    onOpen: onOpenShare,
+    onClose: onCloseShare,
+  } = useShare();
 
   return (
     <Grid
@@ -54,12 +62,24 @@ export const Cards = ({ list }: CardsProps) => {
                       state: { targetId: 'event__comment-input' },
                     })
                   }
+                  onShareButtonClick={(event) => onOpenShare(event, id)}
                 />
               }
             />
           </Grid>
         )
       )}
+      <Popover
+        open={Boolean(shareState.anchor)}
+        onClose={onCloseShare}
+        anchorEl={shareState.anchor}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Share url={`${ROOT_URL}/${EVENTS_PATH}/${shareState.id}`} />
+      </Popover>
     </Grid>
   );
 };

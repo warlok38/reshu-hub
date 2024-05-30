@@ -7,7 +7,7 @@ import { dateFormat } from 'shared/utils/format';
 import { NEWS_PATH } from 'shared/constants/routePaths';
 import { Share } from 'widgets/share';
 import { ROOT_URL } from 'shared/api/http/consts';
-import { isProduction } from 'shared/utils/isProduction';
+import { useShare } from 'widgets/share/hooks/useShare';
 
 type NewsListProps = {
   newsList: NewsEntity[];
@@ -15,21 +15,11 @@ type NewsListProps = {
 };
 
 export const NewsList = ({ newsList, styleGrid }: NewsListProps) => {
-  const [shareState, setShareState] = React.useState<{
-    anchor: HTMLButtonElement | null;
-    id: number | undefined;
-  }>({ anchor: null, id: undefined });
-
-  const openSharePopoverHandler = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: number
-  ) => {
-    setShareState({ anchor: event.currentTarget, id });
-  };
-
-  const closeSharePopoverHandler = () => {
-    setShareState({ anchor: null, id: undefined });
-  };
+  const {
+    state: shareState,
+    onOpen: onOpenShare,
+    onClose: onCloseShare,
+  } = useShare();
 
   return (
     <Grid
@@ -55,9 +45,7 @@ export const NewsList = ({ newsList, styleGrid }: NewsListProps) => {
               <CardActions
                 likeCount={0}
                 isCommentsVisible={false}
-                onShareButtonClick={(event) =>
-                  openSharePopoverHandler(event, news.id)
-                }
+                onShareButtonClick={(event) => onOpenShare(event, news.id)}
               />
             }
           />
@@ -65,17 +53,14 @@ export const NewsList = ({ newsList, styleGrid }: NewsListProps) => {
       ))}
       <Popover
         open={Boolean(shareState.anchor)}
-        onClose={closeSharePopoverHandler}
+        onClose={onCloseShare}
         anchorEl={shareState.anchor}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
       >
-        <Share
-          url={`${ROOT_URL}/${NEWS_PATH}/${shareState.id}`}
-          disabled={!isProduction()}
-        />
+        <Share url={`${ROOT_URL}/${NEWS_PATH}/${shareState.id}`} />
       </Popover>
     </Grid>
   );

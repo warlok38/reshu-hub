@@ -29,15 +29,9 @@ const NewsDetailPage = () => {
         <Button
           variant="outlined"
           color="secondary"
-        >
-          В архив
-        </Button>
-        <Button
-          variant="outlined"
-          color="secondary"
           onClick={() => onDelete({ id: Number(id) })}
         >
-          Удалить новость
+          В архив
         </Button>
       </Stack>
       <Typography

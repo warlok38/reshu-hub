@@ -6,20 +6,22 @@ import {
   VKIcon,
   VKShareButton,
 } from 'react-share';
+import { isProduction } from 'shared/utils/isProduction';
 
 type ShareProps = {
   url: string;
-  disabled?: boolean;
 };
 
-export const Share = ({ url, disabled }: ShareProps) => {
+export const Share = ({ url }: ShareProps) => {
+  const disabled = !isProduction();
+
   return (
     <Stack
       py={2}
       px={4}
       gap={2}
     >
-      <Typography>Поделиться новостью</Typography>
+      <Typography>Поделиться</Typography>
       <Stack
         gap={2}
         direction="row"
