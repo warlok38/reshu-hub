@@ -13,6 +13,7 @@ type CardActionsProps = {
   isCommentsVisible?: boolean;
   isShareVisible?: boolean;
   onCommentsClick?: () => void;
+  onShareButtonClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const CardActions = ({
@@ -24,6 +25,7 @@ export const CardActions = ({
   isCommentsVisible = true,
   isShareVisible = true,
   onCommentsClick,
+  onShareButtonClick,
 }: CardActionsProps) => {
   return (
     <S.Wrapper>
@@ -40,9 +42,7 @@ export const CardActions = ({
           onClick={onCommentsClick}
         />
       )}
-      {isShareVisible && (
-        <ShareButton onClick={() => console.log('click ShareButton')} />
-      )}
+      {isShareVisible && <ShareButton onClick={onShareButtonClick} />}
     </S.Wrapper>
   );
 };
