@@ -6,9 +6,12 @@ import { LoginButton } from 'features/auth/login';
 import { Stack } from '@mui/material';
 import { AddButton } from 'features/add';
 import { useScreen } from 'shared/hooks/useScreen';
+import { useAuth } from 'features/auth/hooks/useAuth';
+import { LogoutButton } from 'features/auth/logout';
 
 export function Header() {
   const { isSmallScreen } = useScreen();
+  const { auth } = useAuth();
 
   return (
     <S.Wrapper>
@@ -28,7 +31,7 @@ export function Header() {
           alignItems="center"
         >
           <AddButton />
-          <LoginButton />
+          {auth.isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </Stack>
       </S.Content>
     </S.Wrapper>

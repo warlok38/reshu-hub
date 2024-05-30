@@ -9,20 +9,13 @@ import {
 } from '@mui/material';
 import * as S from 'features/auth/styled';
 import { PasswordInput } from 'shared/components/Input';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-
-type LoginFormValues = {
-  login: string;
-  password: string;
-  rememberMe: boolean;
-};
+import { useLogin } from 'features/auth/hooks/useLogin';
 
 export const LoginForm = () => {
-  const { handleSubmit, control, register } = useForm<LoginFormValues>();
+  const { form, onSubmit, isLoading } = useLogin();
 
-  const onSubmit: SubmitHandler<LoginFormValues> = (data) => {
-    console.log('form data', data);
-  };
+  const { register, handleSubmit, formState } = form;
+  const { errors } = formState;
 
   return (
     <S.Wrapper elevation={4}>
@@ -32,40 +25,24 @@ export const LoginForm = () => {
           spacing={6}
         >
           <S.Title>Вход на сайт</S.Title>
-          <Controller
-            name="login"
-            control={control}
-            rules={{
-              required: 'Обязательное поле',
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <TextField
-                error={!!error}
-                type="text"
-                label="Логин"
-                variant="outlined"
-                helperText={error ? error.message : null}
-                {...field}
-              />
-            )}
+          <TextField
+            {...register('email', { required: 'Обязательное поле' })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            type="email"
+            label="Почта (логин)"
+            variant="outlined"
+            placeholder="Введите email"
           />
-          <Controller
-            name="password"
-            control={control}
-            rules={{
-              required: 'Обязательное поле',
-            }}
-            render={({ field, fieldState: { error } }) => (
-              <PasswordInput
-                error={!!error}
-                label="Пароль"
-                autoComplete="off"
-                helperText={error ? error.message : null}
-                {...field}
-              />
-            )}
+          <PasswordInput
+            {...register('password', { required: 'Обязательное поле' })}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            label="Пароль"
+            autoComplete="off"
+            placeholder="Введите пароль"
           />
-          <Stack
+          {/* <Stack
             direction="row"
             alignItems="center"
             justifyContent="space-between"
@@ -82,12 +59,13 @@ export const LoginForm = () => {
             >
               Забыли пароль ?
             </S.StyledLink>
-          </Stack>
+          </Stack> */}
           <Box textAlign="center">
             <S.StyledButton
               type="submit"
               variant="contained"
               color="secondary"
+              loading={isLoading}
             >
               Войти
             </S.StyledButton>

@@ -3,6 +3,7 @@ import { Box, Divider, Stack, TextField } from '@mui/material';
 import { PasswordInput } from 'shared/components/Input';
 import * as S from 'features/auth/styled';
 import { useRegistration } from 'features/auth/hooks/useRegistration';
+
 export const RegistrationForm = () => {
   const { form, onSubmit, isLoading } = useRegistration();
 

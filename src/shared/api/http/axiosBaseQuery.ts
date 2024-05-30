@@ -15,6 +15,7 @@ import { HttpErrorCodesEnum } from 'shared/lib/errors/types';
 import { createUnauthorizedError } from 'shared/lib/errors/unauthorizedError';
 import { getDataFromResponse } from 'shared/utils/getDataFromResponse';
 import { axiosInstanсe } from './axiosInstance';
+import { accessToken } from 'shared/utils/accessToken';
 
 export type AxiosBaseQueryArgs = {
   url: string;
@@ -69,7 +70,10 @@ export function axiosBaseQuery(
           method,
           data,
           params,
-          headers,
+          headers: {
+            Authorization: `Bearer ${accessToken.getToken()}`,
+            ...headers,
+          },
         });
       return {
         data: getDataFromResponse(result).data,
