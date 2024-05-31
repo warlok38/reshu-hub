@@ -3,11 +3,11 @@ import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
 import { Grid, Popover } from '@mui/material';
 import { eventsMock } from 'shared/mocks/events';
-import { EVENTS_PATH } from 'shared/constants/routePaths';
 import { useNavigate } from 'react-router';
 import { useShare } from 'widgets/share/hooks/useShare';
-import { ROOT_URL } from 'shared/api/http/consts';
 import { Share } from 'widgets/share';
+import { PROD_HOSTNAME, PROD_PROTOCOL } from 'shared/constants/path';
+import { routeCodesEnum } from 'shared/constants/routeCodes';
 
 type CardsProps = {
   list: typeof eventsMock.actual | typeof eventsMock.past;
@@ -50,7 +50,7 @@ export const Cards = ({ list }: CardsProps) => {
               description={description}
               date={date}
               image={image}
-              linkProps={{ to: `${EVENTS_PATH}/${id}` }}
+              linkProps={{ to: `/${routeCodesEnum.Enum.events}/${id}` }}
               actions={
                 <CardActions
                   likeCount={likeCount}
@@ -58,7 +58,7 @@ export const Cards = ({ list }: CardsProps) => {
                   commentCount={commentCount}
                   hasOwnComments={hasOwnComments}
                   onCommentsClick={() =>
-                    navigate(`${EVENTS_PATH}/${id}`, {
+                    navigate(`/${routeCodesEnum.Enum.events}/${id}`, {
                       state: { targetId: 'event__comment-input' },
                     })
                   }
@@ -78,7 +78,9 @@ export const Cards = ({ list }: CardsProps) => {
           horizontal: 'left',
         }}
       >
-        <Share url={`${ROOT_URL}/${EVENTS_PATH}/${shareState.id}`} />
+        <Share
+          url={`${PROD_PROTOCOL}://${PROD_HOSTNAME}/${routeCodesEnum.Enum.events}/${shareState.id}`}
+        />
       </Popover>
     </Grid>
   );

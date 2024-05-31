@@ -4,10 +4,10 @@ import { NewsEntity } from 'shared/models/news';
 import { Card } from 'shared/components/Card';
 import { CardActions } from 'entities/cardActions';
 import { dateFormat } from 'shared/utils/format';
-import { NEWS_PATH } from 'shared/constants/routePaths';
 import { Share } from 'widgets/share';
-import { ROOT_URL } from 'shared/api/http/consts';
 import { useShare } from 'widgets/share/hooks/useShare';
+import { PROD_HOSTNAME, PROD_PROTOCOL } from 'shared/constants/path';
+import { routeCodesEnum } from 'shared/constants/routeCodes';
 
 type NewsListProps = {
   newsList: NewsEntity[];
@@ -40,7 +40,7 @@ export const NewsList = ({ newsList, styleGrid }: NewsListProps) => {
             description={news.newsText}
             date={dateFormat(news.createDate)}
             image="https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png"
-            linkProps={{ to: `${NEWS_PATH}/${news.id}` }}
+            linkProps={{ to: `/${routeCodesEnum.Enum.news}/${news.id}` }}
             actions={
               <CardActions
                 likeCount={0}
@@ -60,7 +60,9 @@ export const NewsList = ({ newsList, styleGrid }: NewsListProps) => {
           horizontal: 'left',
         }}
       >
-        <Share url={`${ROOT_URL}/${NEWS_PATH}/${shareState.id}`} />
+        <Share
+          url={`${PROD_PROTOCOL}://${PROD_HOSTNAME}/${routeCodesEnum.Enum.news}/${shareState.id}`}
+        />
       </Popover>
     </Grid>
   );

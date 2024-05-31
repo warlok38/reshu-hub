@@ -1,5 +1,5 @@
-export function isProduction() {
-  const PROD_HOSTNAME = 'http://reshu-hub.mooo.com';
+import { PROD_HOSTNAME } from 'shared/constants/path';
 
+export function isProduction() {
   return window.location.hostname === PROD_HOSTNAME;
 }
