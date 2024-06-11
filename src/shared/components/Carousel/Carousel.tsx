@@ -9,7 +9,7 @@ import { Captions } from './Captions';
 
 export type IndicatorVariants = 'default' | 'custom';
 export type ImageListType = {
-  link: string;
+  src: string;
   title?: string;
   description?: string;
 }[];
@@ -52,11 +52,11 @@ export const Carousel = ({
         {...props}
       >
         {list && !isEmpty(list) ? (
-          list.map(({ link, title, description }, i) => (
+          list.map(({ src, title, description }, i) => (
             <React.Fragment key={i}>
               <Box
                 component="img"
-                src={link}
+                src={src}
                 sx={{
                   width: '100%',
                   height: '100%',

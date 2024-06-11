@@ -9,6 +9,7 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
 
 type SelectItemsMockType = { code: string; name: string };
 
@@ -49,16 +50,10 @@ export function EventForm() {
       </FormControl>
       <Stack
         direction="row"
-        spacing={4}
+        spacing={2}
       >
-        <TextField
-          label="Дата начала"
-          sx={{ width: '100%' }}
-        />
-        <TextField
-          label="Дата окончания"
-          sx={{ width: '100%' }}
-        />
+        <DatePicker label="Дата начала" />
+        <DatePicker label="Дата окончания" />
       </Stack>
       <TextField label="Место проведения" />
       <TextField

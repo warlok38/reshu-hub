@@ -48,7 +48,7 @@ const EventsPage = () => {
   return (
     <S.Wrapper>
       <Box
-        sx={{ height: 741 }}
+        sx={{ height: 500 }}
         mb={(theme) => theme.spacing(6)}
       >
         <Carousel

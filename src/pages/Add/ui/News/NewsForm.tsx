@@ -1,15 +1,17 @@
 import React from 'react';
-import { Button, CircularProgress, Stack, TextField } from '@mui/material';
+import {
+  Button,
+  CircularProgress,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { CreateNewsEntity } from 'shared/models/news';
-import { UseFormReturn } from 'react-hook-form';
+import { useCreateNews } from 'features/news/hooks/useCreateNews';
+import { UploadInput } from 'shared/components/UploadInput/UploadInput';
 
-type NewsFormProps = {
-  form: UseFormReturn<CreateNewsEntity>;
-  isLoading?: boolean;
-  onSubmit: (values: CreateNewsEntity) => void;
-};
-
-export function NewsForm({ form, isLoading, onSubmit }: NewsFormProps) {
+export function NewsForm() {
+  const { onSubmit, onUploadFile, form, isLoading } = useCreateNews();
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
@@ -27,7 +29,7 @@ export function NewsForm({ form, isLoading, onSubmit }: NewsFormProps) {
           label="Заголовок"
         />
         <TextField
-          {...register('subTitle')}
+          {...register('subtitle')}
           label="Подзаголовок"
         />
         <TextField
@@ -38,6 +40,13 @@ export function NewsForm({ form, isLoading, onSubmit }: NewsFormProps) {
           multiline
           rows={5}
         />
+        <Stack>
+          <Typography>Обложка новости</Typography>
+          <UploadInput
+            onChange={onUploadFile}
+            inputProps={{ accept: 'image/jpg, image/jpeg, image/png' }}
+          />
+        </Stack>
         <Button
           type="submit"
           variant="contained"

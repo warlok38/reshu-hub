@@ -6,7 +6,11 @@ import { CardActions } from 'entities/cardActions';
 import { dateFormat } from 'shared/utils/format';
 import { Share } from 'widgets/share';
 import { useShare } from 'widgets/share/hooks/useShare';
-import { PROD_HOSTNAME, PROD_PROTOCOL } from 'shared/constants/path';
+import {
+  PROD_HOSTNAME,
+  PROD_PROTOCOL,
+  UPLOADS_PATH,
+} from 'shared/constants/path';
 import { routeCodesEnum } from 'shared/constants/routeCodes';
 
 type NewsListProps = {
@@ -39,7 +43,9 @@ export const NewsList = ({ newsList, styleGrid }: NewsListProps) => {
             title={news.title}
             description={news.newsText}
             date={dateFormat(news.createDate)}
-            image="https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png"
+            image={
+              news.image ? `${UPLOADS_PATH}${news.image.fileHash}` : undefined
+            }
             linkProps={{ to: `/${routeCodesEnum.Enum.news}/${news.id}` }}
             actions={
               <CardActions

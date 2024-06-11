@@ -12,7 +12,7 @@ function AboutPage() {
         <Carousel
           list={[
             {
-              link: '/images/satellite0.png',
+              src: '/images/satellite0.png',
               title: 'ReshUCube',
               description:
                 'Маленький космический кубик с большим исследовательским потенциалом ',

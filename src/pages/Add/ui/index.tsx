@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import { NewsForm } from './News';
 import { EventForm } from './Event';
-import { useCreateNews } from 'features/news/hooks/useCreateNews';
 
 type SelectMockCodes = 'news' | 'event';
 type SelectItemsMockType = { code: SelectMockCodes; name: string };
@@ -28,8 +27,6 @@ const AddPage = () => {
   const changeSelectHandler = (e: SelectChangeEvent) => {
     setSelectedValue(e.target.value as SelectMockCodes);
   };
-
-  const { onSubmit, form, isLoading: isLoadingCreateNews } = useCreateNews();
 
   return (
     <Stack spacing={8}>
@@ -54,13 +51,7 @@ const AddPage = () => {
           </Select>
         </FormControl>
       </Box>
-      {selectedValue === 'news' && (
-        <NewsForm
-          form={form}
-          isLoading={isLoadingCreateNews}
-          onSubmit={onSubmit}
-        />
-      )}
+      {selectedValue === 'news' && <NewsForm />}
       {selectedValue === 'event' && <EventForm />}
     </Stack>
   );

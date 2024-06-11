@@ -24,7 +24,7 @@ export const Card = ({
 }: CardProps) => {
   const renderCard = () => (
     <S.Wrapper {...props}>
-      <S.Media image={image} />
+      {image && <S.Media image={image} />}
       <S.Container>
         <S.Content>
           <TextTruncate

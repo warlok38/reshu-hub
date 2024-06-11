@@ -1,6 +1,6 @@
 import { mainApi } from 'shared/api/http/mainApi';
 import { createQueryFn } from 'shared/api/http/queryFnBuilder';
-import { CreateNewsEntity, NewsEntity, NewsList } from 'shared/models/news';
+import { NewsEntity, NewsList } from 'shared/models/news';
 import { NEWS_API } from './consts';
 
 export const newsApi = mainApi.injectEndpoints({
@@ -23,7 +23,7 @@ export const newsApi = mainApi.injectEndpoints({
         NewsEntity
       ),
     }),
-    createNews: build.mutation<void, CreateNewsEntity>({
+    createNews: build.mutation<void, FormData>({
       queryFn: createQueryFn((data) => ({
         url: NEWS_API,
         method: 'POST',

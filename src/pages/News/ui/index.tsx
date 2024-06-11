@@ -1,12 +1,16 @@
 import React from 'react';
 import * as S from './styled';
-import { NewsBanner } from './NewsBanner';
 import { NewsList } from './NewsList';
 import { NewsTags, TagsData } from 'pages/News/ui/NewsTags';
 import { useOutlet } from 'react-router';
 import { useGetNews } from 'features/news/hooks/useGetNews';
 import { isEmpty } from 'lodash';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { Carousel } from 'shared/components/Carousel';
+import { ArrowRight } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import { routeCodesEnum } from 'shared/constants/routeCodes';
+import { UPLOADS_PATH } from 'shared/constants/path';
 
 const mockTags: TagsData[] = [
   { id: 1, name: 'Все' },
@@ -38,12 +42,27 @@ const NewsPage = () => {
 
   return (
     <S.Wrapper>
-      <NewsBanner
-        imageSrc="https://media.proglib.io/wp-uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png"
-        title="Запуск нового спутника"
-        description="Маленький космический кубик с большим исследовательским потенциалом "
-        newsId={1}
-      />
+      <Box
+        sx={{ height: 500, width: '100%' }}
+        mb={(theme) => theme.spacing(6)}
+      >
+        <Carousel
+          list={[
+            {
+              title: list[0].title,
+              description: list[0].subtitle || undefined,
+              src: UPLOADS_PATH + list[0].image?.fileHash || '',
+            },
+          ]}
+          extra={
+            <Link to={`/${routeCodesEnum.Enum.news}/${list[0].id}`}>
+              <Button variant="contained">
+                Подробнее <ArrowRight />
+              </Button>
+            </Link>
+          }
+        />
+      </Box>
       <NewsTags
         data={mockTags}
         stackProps={{ style: { marginTop: '64px' } }}

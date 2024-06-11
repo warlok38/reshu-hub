@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { news } from 'shared/mocks/news';
 import { Banner } from 'shared/components/Banner';
 import { BookmarkBorderOutlined, ShareOutlined } from '@mui/icons-material';
 import * as S from './styled';
@@ -8,6 +7,7 @@ import { useGetNewsDetail } from 'features/news/hooks/useGetNewsDetail';
 import { useParams } from 'react-router';
 import { dateFormat } from 'shared/utils/format';
 import { useDeleteNews } from 'features/news/hooks/useDeleteNews';
+import { UPLOADS_PATH } from 'shared/constants/path';
 
 const NewsDetailPage = () => {
   const { id } = useParams();
@@ -42,7 +42,9 @@ const NewsDetailPage = () => {
       >
         {detail.title}
       </Typography>
-      <Banner imageSrc={news.image.url} />
+      {detail.image && (
+        <Banner imageSrc={`${UPLOADS_PATH}${detail.image.fileHash}`} />
+      )}
       <Typography
         fontSize="24px"
         mt={8}

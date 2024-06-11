@@ -116,20 +116,20 @@ export const eventsMock = {
 export const eventsCarouselListMock = [
   {
     id: 7,
-    link: '/images/event7.png',
+    src: '/images/event7.png',
     title: 'Запуск нового спутника',
     description:
       'Маленький космический кубик с большим исследовательским потенциалом',
   },
   {
     id: 6,
-    link: '/images/event6.png',
+    src: '/images/event6.png',
     title: 'Конкурс молодых ученых Красноярского края',
     description: 'К участию приглашаются ученики 10–11-х классов.',
   },
   {
     id: 1,
-    link: '/images/event1.png',
+    src: '/images/event1.png',
     title: 'Отбор кандидатов для летнего космического лагеря',
     description:
       'Учащиеся 9-10 классов могут принять участие в конкурсе. Подать заявку можно на сайте организации мероприятия.',

@@ -14,7 +14,7 @@ const DetailPage = () => {
         <Carousel
           list={[
             {
-              link: '/images/material7.png',
+              src: '/images/material7.png',
               title: 'Физика в опытах. Часть 4.\nВолны и оптика',
               description:
                 'Количество модулей: 3\nАвтор: Мамаева Елена Викторовна, доцент кафедры физики ',

@@ -16,12 +16,12 @@ export const NewsImageEntity = z.object({
 export const NewsEntity = z.object({
   id: z.number(),
   title: z.string(),
-  subTitle: z.string().or(z.undefined()),
+  subtitle: z.string().or(z.undefined()).or(z.null()),
   newsText: z.string(),
   createDate: z.string(),
   views: z.number(),
   category: NewsCategoryEntity.or(z.null()),
-  images: NewsImageEntity.or(z.null()),
+  image: NewsImageEntity.or(z.null()),
 });
 
 export const NewsList = z.array(NewsEntity);
@@ -33,9 +33,9 @@ export type NewsList = z.infer<typeof NewsList>;
 
 export const CreateNewsEntity = z.object({
   title: z.string(),
-  subTitle: z.string(),
+  subtitle: z.string(),
   newsText: z.string(),
-  images: NewsImageEntity.or(z.null()),
+  image: z.instanceof(File),
 });
 
 export type CreateNewsEntity = z.infer<typeof CreateNewsEntity>;
