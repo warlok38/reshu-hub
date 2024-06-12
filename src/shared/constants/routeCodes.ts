@@ -7,5 +7,5 @@ export const routeCodesEnum = z.enum([
   'materials',
   'gallery',
   'about',
-  'add',
 ]);
+export const adminRouteCodesEnum = z.enum(['add']);

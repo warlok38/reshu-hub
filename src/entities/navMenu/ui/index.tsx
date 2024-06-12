@@ -45,14 +45,14 @@ export function NavMenu() {
       >
         <List sx={{ width: 200 }}>
           {headerRoutes.public.map(({ name, path }) => (
-            <ListItem
+            <Link
               key={path}
-              disablePadding
+              to={path}
             >
-              <ListItemButton>
-                <Link to={path}>{t(name)}</Link>
-              </ListItemButton>
-            </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton>{t(name)}</ListItemButton>
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

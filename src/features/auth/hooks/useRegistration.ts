@@ -10,9 +10,9 @@ export function useRegistration() {
   const form = useForm<RegistrationFormEntity>();
 
   const submitHandler = (values: RegistrationFormEntity) => {
-    const { firsName, middleName, lastName, email, password } = values;
+    const { firstName, middleName, lastName, email, password } = values;
 
-    registration({ firsName, middleName, lastName, email, password })
+    registration({ firstName, middleName, lastName, email, password })
       .unwrap()
       .then(() => {
         navigate('/');

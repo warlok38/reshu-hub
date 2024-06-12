@@ -19,4 +19,5 @@ export const ABOUT_PATH = '/about';
 
 //ADMIN
 /* ADD */
-export const ADD_PATH = '/admin/add';
+export const ADMIN_PATH = '/admin';
+export const ADD_PATH = `${ADMIN_PATH}/add`;

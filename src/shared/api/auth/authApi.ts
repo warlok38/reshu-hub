@@ -1,8 +1,9 @@
 import { mainApi } from 'shared/api/http/mainApi';
 import { createQueryFn } from 'shared/api/http/queryFnBuilder';
-import { LOGIN_API, LOGOUT_API } from './consts';
+import { INIT_API, LOGIN_API, LOGOUT_API } from './consts';
 import { LoginParams } from 'shared/models/params/auth/login';
 import { LoginEntity } from 'shared/models/api/auth/login';
+import { InitEntity } from 'shared/models/api/auth/init';
 
 export const authApi = mainApi.injectEndpoints({
   endpoints: (build) => ({
@@ -22,8 +23,18 @@ export const authApi = mainApi.injectEndpoints({
         method: 'GET',
       })),
     }),
+    init: build.query<InitEntity, void>({
+      queryFn: createQueryFn(
+        () => ({
+          url: INIT_API,
+          method: 'GET',
+        }),
+        InitEntity
+      ),
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useLoginMutation, useLazyLogoutQuery } = authApi;
+export const { useLoginMutation, useLazyLogoutQuery, useLazyInitQuery } =
+  authApi;

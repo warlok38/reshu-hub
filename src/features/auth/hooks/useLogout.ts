@@ -2,7 +2,7 @@ import { authActions } from 'entities/auth';
 import { useEffect } from 'react';
 import { useLazyLogoutQuery } from 'shared/api/auth/authApi';
 import { useAppDispatch } from 'shared/store';
-import { accessToken } from 'shared/utils/accessToken';
+import { refreshToken } from 'shared/utils/refreshToken';
 
 export function useLogout() {
   const [logout, { isFetching, isSuccess, error }] = useLazyLogoutQuery();
@@ -14,15 +14,15 @@ export function useLogout() {
 
   useEffect(() => {
     if (isSuccess) {
-      accessToken.removeToken();
-      dispatch(authActions.setAuthenticated(false));
+      refreshToken.removeToken();
+      dispatch(authActions.loginFailed());
     }
   }, [dispatch, isSuccess]);
 
   useEffect(() => {
     if (error) {
-      accessToken.removeToken();
-      dispatch(authActions.setAuthenticated(false));
+      refreshToken.removeToken();
+      dispatch(authActions.loginFailed());
     }
   }, [dispatch, error]);
 
