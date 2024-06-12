@@ -1,9 +1,9 @@
-import { useGetSatellitesIndicatorsQuery } from 'shared/api/satellites';
+import { useGetSatellitesParametersQuery } from 'shared/api/satellites';
 import { useMemo } from 'react';
 import { OptionType } from 'shared/types/menu';
 
-export function useGetSatellitesIndicators() {
-  const { data, isFetching } = useGetSatellitesIndicatorsQuery();
+export function useGetSatellitesParameters() {
+  const { data, isFetching } = useGetSatellitesParametersQuery();
 
   const list: OptionType<string>[] = useMemo(() => {
     if (data == null) {

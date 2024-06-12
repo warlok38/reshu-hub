@@ -1,4 +1,4 @@
-import React, { FormEventHandler } from 'react';
+import React from 'react';
 import {
   Autocomplete,
   Button,
@@ -11,8 +11,10 @@ import {
   Typography,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import { useGetSatellitesIndicators } from 'features/satellites';
+import { useGetSatellitesParameters } from 'features/satellites';
 import { Controller, useForm } from 'react-hook-form';
+import dayjs, { Dayjs } from 'dayjs';
+import { useSearchParams } from 'react-router-dom';
 
 type SelectSatellitesMockType = { id: number; label: string };
 
@@ -20,17 +22,25 @@ const selectSatellitesMock: SelectSatellitesMockType[] = [
   { id: 1, label: 'ReshUCube 1' },
   { id: 2, label: 'ReshUCube 2' },
 ];
-const selectSatelliteParamsMock = [
-  { value: '1', label: 'Температура' },
-  { value: '2', label: 'Магнитометр' },
-];
+
+type FormValue = {
+  satellite: number;
+  parameters: string;
+  dateFrom: Dayjs;
+  dateTo: Dayjs;
+};
 
 export const RequestForm = () => {
-  const { list } = useGetSatellitesIndicators();
-  const { handleSubmit, register, control } = useForm();
+  const { list, isLoading } = useGetSatellitesParameters();
+  const { handleSubmit, register, control } = useForm<FormValue>();
+  const [, setSearchParams] = useSearchParams();
 
-  const submitHandler = (values: any) => {
-    console.log('values', values);
+  const submitHandler = ({ parameters, dateFrom, dateTo }: FormValue) => {
+    const params = new URLSearchParams();
+    params.append('parameters', parameters);
+    params.append('dateFrom', dayjs(dateFrom).format('YYYY-MM-DD'));
+    params.append('dateTo', dayjs(dateTo).format('YYYY-MM-DD'));
+    setSearchParams(params);
   };
 
   return (
@@ -63,14 +73,22 @@ export const RequestForm = () => {
               ))}
             </Select>
           </FormControl>
-          <Autocomplete
-            options={selectSatelliteParamsMock}
-            disablePortal
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Параметр"
-                {...register('parameter')}
+          <Controller
+            name="parameters"
+            control={control}
+            render={({ field }) => (
+              <Autocomplete
+                options={list}
+                disablePortal
+                loading={isLoading}
+                getOptionLabel={(option) => option.label}
+                onChange={(_, data) => field.onChange(data ? data.value : '')}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Параметр"
+                  />
+                )}
               />
             )}
           />

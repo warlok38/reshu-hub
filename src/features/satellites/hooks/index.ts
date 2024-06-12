@@ -1,1 +1,2 @@
-export { useGetSatellitesIndicators } from './useGetSatellitesIndicators';
+export { useGetSatellitesParameters } from './useGetSatellitesParameters';
+export { useSatellitesChart } from './useSatellitesChart';

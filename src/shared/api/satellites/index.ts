@@ -1,1 +1,4 @@
-export { useGetSatellitesIndicatorsQuery } from './satellitesApi';
+export {
+  useGetSatellitesParametersQuery,
+  useGetSatellitesDataQuery,
+} from './satellitesApi';
