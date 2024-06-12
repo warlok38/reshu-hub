@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEventHandler } from 'react';
 import {
   Autocomplete,
   Button,
@@ -6,12 +6,13 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
+import { useGetSatellitesIndicators } from 'features/satellites';
+import { Controller, useForm } from 'react-hook-form';
 
 type SelectSatellitesMockType = { id: number; label: string };
 
@@ -20,17 +21,16 @@ const selectSatellitesMock: SelectSatellitesMockType[] = [
   { id: 2, label: 'ReshUCube 2' },
 ];
 const selectSatelliteParamsMock = [
-  { id: 1, label: 'Температура' },
-  { id: 2, label: 'Магнитометр' },
+  { value: '1', label: 'Температура' },
+  { value: '2', label: 'Магнитометр' },
 ];
 
 export const RequestForm = () => {
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(
-    undefined
-  );
+  const { list } = useGetSatellitesIndicators();
+  const { handleSubmit, register, control } = useForm();
 
-  const changeSelectHandler = (e: SelectChangeEvent) => {
-    setSelectedValue(e.target.value);
+  const submitHandler = (values: any) => {
+    console.log('values', values);
   };
 
   return (
@@ -43,41 +43,78 @@ export const RequestForm = () => {
       borderRadius={1}
     >
       <Typography variant="h5">Параметры данных</Typography>
-      <FormControl fullWidth>
-        <InputLabel>Спутник</InputLabel>
-        <Select
-          value={selectedValue}
-          label="Спутник"
-          onChange={changeSelectHandler}
-        >
-          {selectSatellitesMock.map(({ id, label }) => (
-            <MenuItem
-              key={id}
-              value={id}
+      <form onSubmit={handleSubmit(submitHandler)}>
+        <Stack spacing={8}>
+          <FormControl fullWidth>
+            <InputLabel>Спутник</InputLabel>
+            <Select
+              defaultValue={1}
+              label="Спутник"
+              readOnly
+              {...register('satellite')}
             >
-              {label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Autocomplete
-        options={selectSatelliteParamsMock}
-        disablePortal
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Параметр"
+              {selectSatellitesMock.map(({ id, label }) => (
+                <MenuItem
+                  key={id}
+                  value={id}
+                >
+                  {label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Autocomplete
+            options={selectSatelliteParamsMock}
+            disablePortal
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Параметр"
+                {...register('parameter')}
+              />
+            )}
           />
-        )}
-      />
-      <Stack
-        direction="row"
-        spacing={2}
-      >
-        <DatePicker label="Дата с" />
-        <DatePicker label="Дата по" />
-      </Stack>
-      <Button variant="contained">Построить график</Button>
+          <Stack
+            direction="row"
+            spacing={2}
+          >
+            <Controller
+              name="dateFrom"
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  label="Дата с"
+                  value={field.value}
+                  inputRef={field.ref}
+                  onChange={(date) => {
+                    field.onChange(date);
+                  }}
+                />
+              )}
+            ></Controller>
+            <Controller
+              name="dateTo"
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  label="Дата по"
+                  value={field.value}
+                  inputRef={field.ref}
+                  onChange={(date) => {
+                    field.onChange(date);
+                  }}
+                />
+              )}
+            ></Controller>
+          </Stack>
+          <Button
+            variant="contained"
+            type="submit"
+          >
+            Построить график
+          </Button>
+        </Stack>
+      </form>
     </Stack>
   );
 };

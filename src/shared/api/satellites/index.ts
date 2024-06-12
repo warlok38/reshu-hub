@@ -1,0 +1,1 @@
+export { useGetSatellitesIndicatorsQuery } from './satellitesApi';

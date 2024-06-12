@@ -6,7 +6,7 @@ export const NEWS_PATH = '/news';
 export const EVENTS_PATH = '/events';
 
 /* EVENTS */
-export const SATELLITE_PATH = '/satellite';
+export const SATELLITE_PATH = '/satellites';
 
 /* MATERIALS */
 export const MATERIALS_PATH = '/materials';

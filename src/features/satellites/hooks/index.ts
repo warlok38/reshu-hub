@@ -1,0 +1,1 @@
+export { useGetSatellitesIndicators } from './useGetSatellitesIndicators';
