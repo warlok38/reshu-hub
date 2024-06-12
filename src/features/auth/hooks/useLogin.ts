@@ -6,11 +6,12 @@ import { useNavigate } from 'react-router';
 import { useLoginMutation } from 'shared/api/auth/authApi';
 import { LoginParams } from 'shared/models/params/auth/login';
 import { useAppDispatch } from 'shared/store';
-import { accessToken } from 'shared/utils/accessToken';
+import { refreshToken } from 'shared/utils/refreshToken';
 
 export function useLogin() {
   const [login, { data, originalArgs, isLoading, isSuccess, error }] =
     useLoginMutation();
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const form = useForm<LoginParams>();
@@ -21,18 +22,17 @@ export function useLogin() {
 
   useEffect(() => {
     if (isSuccess && data && originalArgs) {
-      accessToken.setToken(data.token);
+      refreshToken.setToken(data.refreshToken);
 
-      dispatch(authActions.setAuthenticated(true));
       navigate('/');
     }
-  }, [data, isSuccess, originalArgs, navigate, dispatch]);
+  }, [data, isSuccess, originalArgs, navigate]);
 
   useEffect(() => {
     if (error) {
-      dispatch(authActions.setAuthenticated(false));
+      dispatch(authActions.loginFailed());
 
-      enqueueSnackbar(error?.message || 'Ошибка при регистрации', {
+      enqueueSnackbar(error?.message || 'Не удалось авторизоваться', {
         variant: 'error',
         autoHideDuration: 3000,
       });

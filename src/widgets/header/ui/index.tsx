@@ -3,15 +3,19 @@ import { NavMenu } from 'entities/navMenu';
 import { Logo } from 'shared/components/Logo';
 import * as S from './styled';
 import { LoginButton } from 'features/auth/login';
-import { Stack } from '@mui/material';
-import { AddButton } from 'features/add';
+import { Skeleton, Stack } from '@mui/material';
 import { useScreen } from 'shared/hooks/useScreen';
-import { useAuth } from 'features/auth/hooks/useAuth';
-import { LogoutButton } from 'features/auth/logout';
+import { UserAccount } from 'entities/userAccount';
+import { UserEntity } from 'shared/models/api/user/user';
 
-export function Header() {
+type HeaderProps = {
+  user: UserEntity | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+};
+
+export function Header({ user, isAuthenticated, isLoading }: HeaderProps) {
   const { isSmallScreen } = useScreen();
-  const { auth } = useAuth();
 
   return (
     <S.Wrapper>
@@ -30,8 +34,18 @@ export function Header() {
           spacing={4}
           alignItems="center"
         >
-          <AddButton />
-          {auth.isAuthenticated ? <LogoutButton /> : <LoginButton />}
+          {isLoading ? (
+            <Skeleton
+              variant="circular"
+              sx={{ padding: '5px' }}
+              width={isSmallScreen ? 32 : 40}
+              height={isSmallScreen ? 32 : 40}
+            />
+          ) : isAuthenticated && user ? (
+            <UserAccount user={user} />
+          ) : (
+            <LoginButton />
+          )}
         </Stack>
       </S.Content>
     </S.Wrapper>

@@ -30,14 +30,17 @@ const mockTags: TagsData[] = [
 const NewsPage = () => {
   const outlet = useOutlet();
 
-  const { list } = useGetNews();
+  const { list, isLoading } = useGetNews();
 
   if (outlet) {
     return outlet;
   }
 
   if (!list || isEmpty(list)) {
-    return <div>Новостей нет</div>;
+    if (isLoading) {
+      return null;
+    }
+    return <div>Список новостей пуст</div>;
   }
 
   return (

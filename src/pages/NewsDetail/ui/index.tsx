@@ -8,12 +8,14 @@ import { useParams } from 'react-router';
 import { dateFormat } from 'shared/utils/format';
 import { useDeleteNews } from 'features/news/hooks/useDeleteNews';
 import { UPLOADS_PATH } from 'shared/constants/path';
+import { useRoles } from 'shared/hooks/useRoles';
 
 const NewsDetailPage = () => {
   const { id } = useParams();
 
   const { detail } = useGetNewsDetail(Number(id));
   const { onDelete } = useDeleteNews();
+  const { hasRoles } = useRoles(['admin', 'teacher']);
 
   if (!detail) {
     return <div>Новость не найдена</div>;
@@ -21,19 +23,21 @@ const NewsDetailPage = () => {
 
   return (
     <Box>
-      <Stack
-        direction="row"
-        alignItems="center"
-        gap={4}
-      >
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() => onDelete({ id: Number(id) })}
+      {hasRoles && (
+        <Stack
+          direction="row"
+          alignItems="center"
+          gap={4}
         >
-          В архив
-        </Button>
-      </Stack>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => onDelete({ id: Number(id) })}
+          >
+            В архив
+          </Button>
+        </Stack>
+      )}
       <Typography
         variant="h1"
         fontSize="44px"

@@ -6,8 +6,9 @@ export const EventType = z.object({
 });
 
 export const EventEntity = z.object({
+  id: z.number(),
   name: z.string(),
-  subtitle: z.string(),
+  subtitle: z.string().or(z.null()),
   dateStart: z.string(),
   dateEnd: z.string(),
   //TODO типизировать newsId

@@ -1,4 +1,7 @@
-import { routeCodesEnum } from 'shared/constants/routeCodes';
+import {
+  adminRouteCodesEnum,
+  routeCodesEnum,
+} from 'shared/constants/routeCodes';
 import * as routePaths from 'shared/constants/routePaths';
 
 export const headerRoutes = {
@@ -46,7 +49,7 @@ export const headerRoutes = {
   admin: [
     {
       path: routePaths.ADD_PATH,
-      code: routeCodesEnum.enum.add,
+      code: adminRouteCodesEnum.enum.add,
     },
   ],
 } as const;

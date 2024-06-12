@@ -9,10 +9,15 @@ import {
 } from 'react-router-dom';
 import { Layout } from 'shared/components/Layout';
 import { adminRoutes } from './adminRoutes';
+
+import { useRoles } from 'shared/hooks/useRoles';
+
 const Registration = React.lazy(() => import('pages/Registration'));
 const Login = React.lazy(() => import('pages/Login'));
 
-export function getRouter() {
+export function useGetRouter() {
+  const { hasRoles } = useRoles(['admin', 'teacher']);
+
   const unprotectedRoutes = publicRoutes.map(
     ({ index, path, element, handle, children }) => {
       return index ? (
@@ -40,33 +45,33 @@ export function getRouter() {
       );
     }
   );
-  const protectedRoutes = adminRoutes.map(
-    ({ index, path, element, handle, children }) => {
-      return index ? (
-        <Route
-          index={index}
-          key={path}
-          element={element}
-        />
-      ) : (
-        <Route
-          key={path}
-          path={path}
-          handle={handle}
-          element={element}
-        >
-          {children?.map((children) => (
-            <Route
-              key={path}
-              handle={children.handle}
-              path={children.path}
-              element={children.element}
-            />
-          ))}
-        </Route>
-      );
-    }
-  );
+  const protectedRoutes = hasRoles
+    ? adminRoutes.map(({ index, path, element, handle, children }) => {
+        return index ? (
+          <Route
+            index={index}
+            key={path}
+            element={element}
+          />
+        ) : (
+          <Route
+            key={path}
+            path={path}
+            handle={handle}
+            element={element}
+          >
+            {children?.map((children) => (
+              <Route
+                key={path}
+                handle={children.handle}
+                path={children.path}
+                element={children.element}
+              />
+            ))}
+          </Route>
+        );
+      })
+    : [];
 
   return createBrowserRouter(
     createRoutesFromElements([

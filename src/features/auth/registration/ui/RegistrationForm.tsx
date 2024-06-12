@@ -27,9 +27,9 @@ export const RegistrationForm = () => {
             variant="outlined"
           />
           <TextField
-            {...register('firsName', { required: 'Обязательное поле' })}
-            error={!!errors.firsName}
-            helperText={errors.firsName?.message}
+            {...register('firstName', { required: 'Обязательное поле' })}
+            error={!!errors.firstName}
+            helperText={errors.firstName?.message}
             type="text"
             label="Имя"
             variant="outlined"
