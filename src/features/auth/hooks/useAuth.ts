@@ -13,13 +13,13 @@ export function useAuth() {
   const dispatch = useAppDispatch();
 
   const initApp = useCallback(() => {
-    if (!!refreshToken.getToken() && !authState.isAuthenticated) {
+    if (!!refreshToken.getToken()) {
       init();
       return;
     }
 
     dispatch(authActions.loginFailed());
-  }, [authState.isAuthenticated, init, dispatch]);
+  }, [init, dispatch]);
 
   useEffect(() => {
     if (isSuccess && currentData) {
