@@ -39,6 +39,7 @@ export function useCreateNews() {
         variant: 'success',
       });
       form.reset();
+      //TODO добавить сброс картинки и сделать её обязательным полем
     }
   }, [isSuccess, form]);
 
