@@ -25,6 +25,7 @@ const SatellitePage = () => {
               key={chart.id}
               series={chart.series}
               xAxis={chart.xAxis}
+              yAxis={chart.yAxis}
             />
           ))}
       </Stack>

@@ -25,3 +25,7 @@ export const SatelliteParameterList = z.array(SatelliteParameterEntity);
 
 export type SatelliteParameterList = z.infer<typeof SatelliteParameterList>;
 export type SatelliteDataEntity = z.infer<typeof SatelliteDataEntity>;
+export type SatelliteIndicatorEntity = z.infer<typeof SatelliteIndicatorEntity>;
+export type SatelliteIndicatorDataEntity = z.infer<
+  typeof SatelliteIndicatorDataEntity
+>;

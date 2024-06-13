@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { dateFormat } from 'shared/utils/format';
 import { AxisConfig } from '@mui/x-charts';
+import { isAllEquals, maxValueInicator, minValueInicator } from '../utils';
 
 export function useSatellitesChart() {
   const [searchParams] = useSearchParams();
@@ -21,7 +22,6 @@ export function useSatellitesChart() {
     skip: !parameters || !dateFrom || !dateTo,
   });
 
-  // TODO: xAxis not displayed, fix
   const charts = useMemo(() => {
     if (data == null) {
       return null;
@@ -33,7 +33,7 @@ export function useSatellitesChart() {
         xAxis: [
           {
             id: 'Дата',
-            data: data.map((item) => item.date),
+            data: data.map((item) => dayjs(item.date)),
             valueFormatter: (date) => dateFormat(date),
           },
         ] as AxisConfig[],
@@ -44,11 +44,15 @@ export function useSatellitesChart() {
             data: data.map((item) => item.value),
           },
         ],
+        yAxis: [
+          {
+            max: isAllEquals(data) ? maxValueInicator(data) : undefined,
+            min: isAllEquals(data) ? minValueInicator(data) : undefined,
+          },
+        ] as AxisConfig[],
       };
     });
   }, [data]);
-
-  console.log('charts', charts);
 
   return {
     list: charts,
